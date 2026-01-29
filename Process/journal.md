@@ -1,5 +1,4 @@
 # Week 1 - Make A Thing: The Tomb of Many Ends
-### 15.01.2026-22.01.2026
 
 ## Initial Brainstorm
 First, I knew that I wanted to use Twine because I had never used it before, but it seemed unique and fun. Then, I tried brainstorming a theme/idea/story to try to implement in Twine. I kept going back to theme's I had already tried before and didn't like any of them because I really wanted to try something new. I ended up using a topic randomizer website until I found something that inspired me. I saw the word Mummy and instantly thought of Indiana Jones and thought of like old tomb exploration and so that is what I went with. Knowing that the goal was not to make something perfect but simply to make something complete helped me commit to an idea and move forward. 
@@ -37,3 +36,17 @@ Moving forward, I’m interested in continuing to experiment with simple mechani
 One way I thought about improving it would be to simply add music to create a slightly more immersive experience. When I was planning out the adventure, I had also thought of adding a trap room between the stone door and the final room. In this room, the player would have to use clue to make their way across trapped tiles that could help or end their playthrough. Due to time and the actual scope of this project, I decided not to add it for now.
 
 Anyways, I am pretty proud of the end result and I think it is an interesting Make A Thing project.
+
+# Week 2 - Exploration Prototype 1 
+
+Due to some small technical issues during the class, we were just told to play around with Unity and to learn to be comfortable using it. 
+
+Since I did not know where to start and I had never used Unity before, I decided to find a basic tutorial to follow. I found that Unity offered many tutorials with [Unity Learn](https://learn.unity.com/?signup=true). I decided to follow a basic tutorial, one of the first ones I saw. 
+
+The tutorial explained what each window does, how to move around the interface, how to create objects, apply materials and effects, set up lighting, and make simple moving objects. Overall, it felt pretty well rounded and gave a good overview of the engine rather than focusing on one specific feature.
+
+![Screenshot of Unity window with tutorial in progress](Media/week2_tutorial_screenshot.png)
+
+I did not know what to expect but turns out it is similar to Unreal Engine in many ways. In cegep, I had a few classes where we learned how to use Unreal Engine so it felt familiar. This made the learning process feel less intimidating and helped me feel more confident navigating Unity. Even though I didn’t create a full prototype this week, this exploration helped me better understand how Unity is structured and how different elements work together inside the engine. Getting familiar with the interface, hierarchy, and basic workflows felt important before attempting anything more complex. It also made me realize how much time can be saved by using tutorials as a starting point rather than trying to figure everything out on my own.
+
+Overall, this week felt more like laying groundwork than producing something finished. While it was less creative than the previous assignment, it helped me feel more prepared to use Unity in future weeks and made the idea of building something from scratch in the engine feel more achievable.
