@@ -37,7 +37,7 @@ One way I thought about improving it would be to simply add music to create a sl
 
 Anyways, I am pretty proud of the end result and I think it is an interesting Make A Thing project.
 
-# Week 2 - Exploration Prototype 1 
+# Week 2 - Exploration Prototype 1 : Basic Unity Tutorials
 
 Due to some small technical issues during the class, we were just told to play around with Unity and to learn to be comfortable using it. 
 
