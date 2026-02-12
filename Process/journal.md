@@ -210,7 +210,7 @@ Instead of getting stuck trying to fix the clicking mechanic, I chose to protect
 ### Reflection
 
 Overall, this prototype helped me better understand how simple rule-based systems can create surprisingly complex results. 
-What began as a very minimal idea — tiles growing based on their neighbors, turned into something visually engaging to watch. 
+What began as a very minimal idea, tiles growing based on their neighbors, turned into something visually engaging to watch. 
 As the grid filled in, clusters of color started forming naturally, and no two runs ever looked exactly the same. 
 It reinforced the idea that emergence does not require complicated mechanics; sometimes a few clear rules are enough.
 
