@@ -3,6 +3,8 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public bool isFilled = false;
+    public Color tileColor; //adding color tiles
+
     private SpriteRenderer sr;
 
     void Awake()
@@ -16,10 +18,15 @@ public class Tile : MonoBehaviour
         
     }
 
-    public void Fill()
+    public void Fill(Color newColor)
     {
         isFilled = true;
-        sr.color = Color.white;
+        
+        //sr.color = Color.white;
+        
+        //colorful tiles
+        tileColor = newColor;
+        sr.color = newColor;
     }
 
     public void Clear()

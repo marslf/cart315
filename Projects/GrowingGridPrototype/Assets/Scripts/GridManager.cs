@@ -13,7 +13,7 @@ public class GridManager : MonoBehaviour
     private Tile[,] grid;
 
     [Header("Growth Settings")]
-    public float spawnInterval = 2f;
+    public float spawnInterval = 1f;
 
     void Awake()
     {
@@ -24,6 +24,12 @@ public class GridManager : MonoBehaviour
     {
         GenerateGrid();
         StartCoroutine(GrowthRoutine());
+        
+        // seed a starting tile
+        int startX = width / 2;
+        int startY = height / 2;
+
+        grid[startX, startY].Fill(Random.ColorHSV());
     }
 
     void GenerateGrid()
@@ -43,11 +49,6 @@ public class GridManager : MonoBehaviour
                 GameObject tileObj = Instantiate(tilePrefab, position, Quaternion.identity);
 
                 Tile tile = tileObj.GetComponent<Tile>();
-                if (tile == null)
-                {
-                    Debug.LogError("Tile prefab is missing Tile script!");
-                    continue;
-                }
 
                 grid[x, y] = tile;
                 tile.SetCoordinates(x, y);
@@ -57,6 +58,8 @@ public class GridManager : MonoBehaviour
     
     void Update()
     {
+        
+        //does not work, idk why 
         if (Input.GetMouseButtonDown(0)) // left mouse click
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -101,7 +104,11 @@ public class GridManager : MonoBehaviour
 
         if (Random.value < growChance)
         {
-            tile.Fill();
+            //tile.Fill(); 
+            
+            //new colors
+            Color chosenColor = ChooseGrowthColor(x, y);
+            tile.Fill(chosenColor);
         }
     }
 
@@ -128,4 +135,53 @@ public class GridManager : MonoBehaviour
 
         return count;
     }
+    
+    Color ChooseGrowthColor(int x, int y)
+    {
+        // collect neighbor colors
+        System.Collections.Generic.List<Color> neighborColors = new System.Collections.Generic.List<Color>();
+    
+        for(int dx = -1; dx <= 1; dx++)
+        {
+            for(int dy = -1; dy <= 1; dy++)
+            {
+                if(dx == 0 && dy == 0) continue;
+    
+                int nx = x + dx;
+                int ny = y + dy;
+    
+                if(nx >= 0 && nx < width && ny >= 0 && ny < height)
+                {
+                    Tile neighbor = grid[nx, ny];
+    
+                    if(neighbor.isFilled)
+                    {
+                        neighborColors.Add(neighbor.tileColor);
+                    }
+                }
+            }
+        }
+    
+        // If neighbors exist=
+        if(neighborColors.Count > 0)
+        {
+            // 70% same color
+            if(Random.value < 0.7f)
+            {
+                return neighborColors[Random.Range(0, neighborColors.Count)];
+            }
+    
+            // 30% mutatation 
+            return Random.ColorHSV(
+                0f,1f,
+                0.7f,1f,
+                0.7f,1f
+            );
+        }
+    
+        // No neighbors=
+        return Color.white;
+    }
+
+    
 }
