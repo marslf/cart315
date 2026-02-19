@@ -212,7 +212,7 @@ Instead of getting stuck trying to fix the clicking mechanic, I chose to protect
 
 ### Reflection
 
-Overall, this prototype helped me better understand how simple rule-based systems can create surprisingly complex results. 
+Overall, this prototype helped me better explore simple rules to create larger systems.
 What began as a very minimal idea, tiles growing based on their neighbors, turned into something visually engaging to watch. 
 As the grid filled in, clusters of color started forming naturally, and no two runs ever looked exactly the same. 
 It reinforced the idea that emergence does not require complicated mechanics; sometimes a few clear rules are enough.
@@ -280,7 +280,7 @@ There were a few small minor debugging issues along the way, but fixing those he
 
 ![mutation logic script](Media/w5/w05_mutationlogic.png)
 
-### Overall Reflection
+### Reflection
 This week felt very iterative. I really just focused on refining what was already there and make the prototype feel more cohesive as a whole. 
 At the start my focus was really figuring out the mouse clicking and making that and, and it was honestly a little frustrating at first.
 However once that was resolved, I was really motivated to add more and found it fun!
