@@ -41,9 +41,12 @@ Anyway, I am pretty proud of the end result and I think it is an interesting Mak
 
 Due to some small technical issues during the class, we were just told to play around with Unity and to learn to be comfortable using it. 
 
-Since I did not know where to start and I had never used Unity before, I decided to find a basic tutorial to follow. I found that Unity offered many tutorials with [Unity Learn](https://learn.unity.com/?signup=true). I decided to follow a basic tutorial, one of the first ones I saw. 
+Since I did not know where to start and I had never used Unity before, I decided to find a basic tutorial to follow. 
+I found that Unity offered many tutorials with [Unity Learn](https://learn.unity.com/?signup=true). I decided to follow a basic tutorial, one of the first ones I saw. 
 
-The tutorial explained what each window does, how to move around the interface, how to create objects, apply materials and effects, set up lighting, and make simple moving objects. Overall, it felt well-rounded and gave a good overview of the engine rather than focusing on one specific feature.
+The tutorial explained what each window does, how to move around the interface, how to create objects, apply materials and effects, 
+set up lighting, and make simple moving objects. 
+Overall, it felt well-rounded and gave a good overview of the engine rather than focusing on one specific feature.
 
 ![Screenshot of Unity window with tutorial in progress](Media/week2_tutorial_screenshot.png)
 
@@ -63,8 +66,8 @@ and to create a low fidelity prototype to explore this question/idea.
 I started by brainstorming ideas that I might want to explore.
 
 ### Brainstorm
-I was feeling super sick all week so this is not my best but I did try. At first, I wanted something simple enough to realistically complete, but still interesting from a design perspective. 
-Since we were given a Pong-style base game, I thought it made sense to build off of that rather than starting something entirely new. I kept thinking about how I could slightly disrupt a very familiar game without making it overly complicated.
+I was feeling super sick all week so this is not my best, but I did try. At first, I wanted something simple enough to realistically complete, but still interesting from a design perspective. 
+Since we were given a Pong-style base game, I thought it made sense to build on that rather than starting something entirely new. I kept thinking about how I could slightly disrupt a very familiar game without making it overly complicated.
 
 I was drawn to the idea of unpredictability. Pong is normally very stable — the ball behaves exactly how you expect it to, 
 and over time players can almost enter a rhythm. I became curious about what would happen if that stability slowly disappeared.
@@ -159,7 +162,7 @@ Going into this prototype, I set an important constraint for myself: keep it low
 Rather than worrying about polish or presentation, I wanted to test whether the mechanic itself felt interesting to watch and interact with.
 
 ### Core Concept
-The prototype consists of an 8x8 grid of circular tiles that gradually fill over time. 
+The prototype consists of a 8x8 grid of circular tiles that gradually fill over time. 
 Each empty tile periodically checks its neighbors to determine whether it should grow.
 
 The system follows a few simple rules:
@@ -228,3 +231,65 @@ Small adjustments like these could dramatically change the behavior of the syste
 More than anything, this week helped me become more comfortable letting systems speak for themselves.
 Overall, I see this prototype as a strong proof of concept and a reminder that experimentation often works best 
 when it stays focused and intentionally small.
+
+# Week 6 - Exploration Prototype 4: Emergent Grow System part 2
+
+This week I really focused on added features and fixing certain parts of last week's prototype. 
+
+![Grid phase 1 v2](Media/w5/w5_01.png)
+
+### Fixing Player Interaction 
+
+I first went back to the clicking issue from last week because deleting the sprouts was not working properly. 
+The main problem ended up being how the input was being handled.
+I had some logic in GridManager before, but it wasn’t set up correctly with the Input System I’m using. 
+I found a really helpful [Unity discussion post](https://discussions.unity.com/t/solved-detecting-mouse-click-on-an-object-in-2d-game/668634/7) 
+that clarified how 2D mouse detection should work.
+
+After reading through that, I adjusted the script and got left-click deleting working properly. 
+Once that worked, I also added right-click to randomly place a color on whatever tile I clicked. 
+That made the grid feel way more interactive immediately, since I could manually “seed” patterns instead of waiting for growth.
+
+![random colours for right clicks](Media/w5/click_random.png)
+
+I also moved the mouse interaction logic out of GridManager.cs and into Tile.cs. 
+Structurally it just made more sense because each tile is responsible for its own behavior. 
+It cleaned up GridManager a lot and made the code easier to navigate.
+
+### Limiting the Colour Palette
+
+Originally, the colors were fully random using Random.ColorHSV(), which looked cool but was chaotic. 
+It made patterns hard to read and didn’t really support intentional design. So I decided to limit the palette to only white (base), primary colours (red, blue, yellow), and secondary colours (green, purple, orange).
+
+This made the system feel more controlled. Patterns became more readable, and it felt less like just chaotic noise.
+
+![limited colour palette](Media/w5/colours.png)
+
+### Tiered Mutation Logic
+
+After that, I decided to try to implement a tiered mutation system to replace the randomness and once again make it feel more intentionally designed. 
+This is honestly the addition I am happiest with in this iteration of this prototype.
+
+The idea/logic was:
+* White (level 0) can spread white or mutate into a primary colour (level 1)
+* Primary colours (level 1) can spread themselves or mutate to a secondary colour (level 2)
+* Secondary colours (level 2) stay as they are (no mutation for now)
+
+I adjusted how growth checks neighbours so that mutation feels influenced by nearby tiles instead of appearing randomly across the grid.
+There were a few small minor debugging issues along the way, but fixing those helped me understand the structure of the script more clearly.
+
+![mutation logic script](Media/w5/w05_mutationlogic.png)
+
+### Overall Reflection
+This week felt very iterative. I really just focused on refining what was already there and make the prototype feel more cohesive as a whole. 
+At the start my focus was really figuring out the mouse clicking and making that and, and it was honestly a little frustrating at first.
+However once that was resolved, I was really motivated to add more and found it fun!
+I am happy with this exploration prototype because I was able to get it to a point where it feels like a small system with its own unique internal rules. 
+I am especially happy with the tiered mutation idea because it makes the spread logical and predictable. 
+It also makes it feel more controllable without removing emergence completely. 
+
+One super minor change I could make if I were to make another iteration, now that I am reflecting, 
+is to speed up the growth, although I do kind of like the slowness and meditative aspect of it, and also to push the mutation logic even further.
+I am still overall pretty happy with this prototype.
+
+![Grid phase 1 v2](Media/w5/w5_02.png)

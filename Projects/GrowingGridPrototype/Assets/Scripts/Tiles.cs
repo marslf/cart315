@@ -78,7 +78,7 @@ using UnityEngine;
             }
         }
 
-        // For right click random fill
+        // right click random fill
         public Color GetRandomPaletteColor()
         {
             Color[] palette = {
