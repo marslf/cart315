@@ -228,3 +228,23 @@ Small adjustments like these could dramatically change the behavior of the syste
 More than anything, this week helped me become more comfortable letting systems speak for themselves.
 Overall, I see this prototype as a strong proof of concept and a reminder that experimentation often works best 
 when it stays focused and intentionally small.
+
+<!-- 
+# Extra Credit - Game Analysis : 
+
+Guidelines: Find a game that you know well or are intrigued by. 
+What decisions have the designers made that cause the game to be interesting? 
+Where have they failed? Think mechanically rather than thematically. 
+What ideas/methods/techniques do you think you could borrow for future projects?
+
+Game brainstorm:
+- Minecraft (classic sandbox game with many different features + updates, still relevant after a long time, started off really basic and transformed slowly over time)
+- Hollow Knight (not the best idea since i have not finished it)
+- Stardew Valley
+- Yarn Too
+- Lovers in a dangerous spacetime (more niche, really fun coop, not overly complicated, good pick)
+
+[Guide to game analysis by MIT](https://ocw.mit.edu/courses/cms-300-introduction-to-videogame-studies-fall-2011/071e671dbde4e7e4578448c75815abf8_MITCMS_300F11_GameAnaGuide.pdf)
+
+[Lovers in a dangerous spacetime dev log](https://www.asteroidbase.com/category/devlog/)
+-->
