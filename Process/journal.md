@@ -293,3 +293,86 @@ is to speed up the growth, although I do kind of like the slowness and meditativ
 I am still overall pretty happy with this prototype.
 
 ![Grid phase 1 v2](Media/w5/w5_02.png)
+
+# Week 7 - Iterative Prototype 1: Conceptualizing 
+
+### Initial brainstorm
+
+During our last class, we had our ideation workshop. 
+It was lowkey very fun, and we were able to come up with ideas I would have never come up with on my own. 
+We first started writing down the ideas we had on our own.
+I had some ideas in mind of general concepts that I haven't really played around with in past projects, but they weren't super fleshed out or anything. 
+The first concept was to do something related to like a desert (temple maybe) type of game because I did make for the Make A Thing assignment week 1 a desert temple themed Twine short story game, [The Tomb of Many Ends](https://github.com/marslf/cart315/blob/main/Process/journal.md#week-1---make-a-thing-the-tomb-of-many-ends).
+The second theme/concept I was interested in was to make something related to fish or being underwater. Maybe something like a fish who was raised on land who wished to explore the sea but was afraid of this unknown world.
+I kept thinking and the third idea I came up with was to make some sort of puzzle game (maybe desert themed?) where the situation stays the same however the player's controls / abilities could change each time so that becomes the engaging variable in this situation. 
+
+I want to focus on more intentional mechanics and let the theme / aesthetics be a secondary aspect of my project and neither of the first two ideas felt particularly interesting.
+So I kept thinking... I am honestly really happy with my last two weeks of exploration prototyping. The base growth and mutation mechanic feels like a pretty strong foundation for a mechanically-interesting game.
+Now time to talk to classmates to come up with fun hybrid ideas!
+
+### Hybrid Time!
+
+This part was really fun. I forced myself to not take it too seriously because once I do I stop myself from formulating initial ideas because they feel half-baked. However if I never formulate half-baked ideas, they can never have the chance of becoming something actually cool and fully-baked.
+
+The first hybrid we came up with was _Sun Rage Game_. This concept kind of made us think of a game called _A Difficult Game About Climbing_ and we took inspiration from that. 
+We came up with the idea of a game where the goal is to get to the sunscreen bottle while avoiding the sun to not get burned. 
+There could be different types of obstacles and challenges to get to the sunscreen. 
+However, the main mechanic we came up with was that you would get increasingly more red (burnt) and the more that increased, your strenght would equally decrease. 
+We also thought of water pools to lower or reset how burnt you got so the level was not impossible.
+
+The second hybrid we came up with was _Delirium Mold Hospital Fungus_. This idea took some light inspiration from the game _Plague Inc_. 
+You, a fungus / mold, had the goal of taking over a hospital by infecting and killing everyone there. 
+There would be different strategies and mechanics to use in order to win depending on your personal preference. 
+You could increase your mortality rate and play really aggressively but then the hospital could like close off wings if things get too bad, 
+or you could also play it slow and pace yourself to infect more people before becoming super deadly, however if you cause other symptoms people might start looking into the cause (you) and find a way to eliminate you.
+You would be able to leave behind spores and multiply yourself, spread via the food, or become airborn or maybe be transmitted by a really busy nurse who saw many patients. 
+This idea has a lot of potential for a lot of really cool and fun mechanics. We decided to name this idea _Mother Funger_.
+
+The third and final hybrid we were able to come up with was _Water Cages_. The idea we came up with was more of an psychological horror _experience_ rather than a game. 
+Your character will decide to go swim with sharks in those cage things (super optional life choice btw), however you decide to get the really good deal and go with the cheaper company. 
+Unfortunately, they are not legit. 
+A shark tries to attack and the cage detaches from the boat and so you plummet into the depths. 
+You wake up in the cage at the bottom of the ocean/sea. You have an oxygen tank so your time is limited, but you believe they will come and save you.
+Due to the fall, you are injured so the controls are bad and your vision is hazy. 
+The shark is swimming around the cage, sometimes trying to take a bit. The whole time, you can hear your heartbeat pounding, getting louder and faster whenever the shark is near. 
+You can try to throw stuff to hit or distract the shark, but he always comes back.
+Your character remains scared but hopeful during the whole 30-minute experience (which could be done in VR mayhaps for extra horror). 
+However, this event does not end well. No one is coming to save you. 
+
+I really liked all three of these ideas but they just didn't really fit with what I had in mind. They could be revisited in the future though. 
+
+### My Idea
+
+After all the hybrids, I kept coming back to the mutation system I built over the past two weeks. 
+It feels like there’s something there that I haven’t fully pushed yet. 
+The growth, the limited palette, the tiered mutation logic, it already behaves like a small ecosystem. 
+So instead of abandoning it and starting something totally new, I want to expand it and make it more intentional and elaborate. 
+I also really liked the idea of the player's abilities / controls changing and thought combining the two ideas (hybrid-style) could be really interesting as well. 
+
+Right now, in my prototype, the system grows and mutates based on its internal rules, and the player can add or delete tiles freely. 
+But what if that freedom changes? 
+What if the system stays the same, but the player’s ability to influence it changes? 
+
+The goal of each level would be to get 1 specific colour to 1 specific point (or more than 1), or to create a specific pattern with the colours. 
+I think I will focus on the mechanics and then experiment to see which of the two is more fun for the players (or I could always have both and just have it swap depeding on the level).
+I am open to both goals, I want to test them both out and decide once I get to that point. 
+
+Another idea I had was to change the mutation logic. I could keep the one I currently have for the first few levels and then have the changes (complications) be gradually introduced.
+I really like the idea of the different colours each having their own logic or "personalities". The mutation logic is cool but I think the colours being more unique could create more engaging interactions and situations.
+Some ideas I had for this were: 
+- varying spreading speeds, 
+- can't grow next to a specific colour, 
+- can grow over a (or any) colour, 
+- decaying after a certain amount of time has passed, 
+- only grows diagonally or only horizontally/veritcally. 
+
+As for the evolving player control, here are some of the ideas I came up with. Some of these overlap. The player: 
+- can only encourage growth (with water),
+- can control the spread speed of a colour,
+- can cause instant decay
+- can spread mold (indirectly causing decay in certain areas),
+- can block off specific spots or sections (walls/fences),
+- can use fertilizer or some sort of acid/anti-fertilizer,
+- can encourage / discourage growth in a specific direction (by creating shaded or sunny spots),
+- can only use abilities a limited amount of times.
+
