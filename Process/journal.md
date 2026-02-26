@@ -212,7 +212,7 @@ Instead of getting stuck trying to fix the clicking mechanic, I chose to protect
 
 ### Reflection
 
-Overall, this prototype helped me better understand how simple rule-based systems can create surprisingly complex results. 
+Overall, this prototype helped me better explore simple rules to create larger systems.
 What began as a very minimal idea, tiles growing based on their neighbors, turned into something visually engaging to watch. 
 As the grid filled in, clusters of color started forming naturally, and no two runs ever looked exactly the same. 
 It reinforced the idea that emergence does not require complicated mechanics; sometimes a few clear rules are enough.
@@ -280,7 +280,7 @@ There were a few small minor debugging issues along the way, but fixing those he
 
 ![mutation logic script](Media/w5/w05_mutationlogic.png)
 
-### Overall Reflection
+### Reflection
 This week felt very iterative. I really just focused on refining what was already there and make the prototype feel more cohesive as a whole. 
 At the start my focus was really figuring out the mouse clicking and making that and, and it was honestly a little frustrating at first.
 However once that was resolved, I was really motivated to add more and found it fun!
@@ -293,6 +293,7 @@ is to speed up the growth, although I do kind of like the slowness and meditativ
 I am still overall pretty happy with this prototype.
 
 ![Grid phase 1 v2](Media/w5/w5_02.png)
+<<<<<<< HEAD
 
 # Week 7 - Iterative Prototype 1: Conceptualizing 
 
@@ -313,6 +314,8 @@ Now time to talk to classmates to come up with fun hybrid ideas!
 ### Hybrid Time!
 
 This part was really fun. I forced myself to not take it too seriously because once I do I stop myself from formulating initial ideas because they feel half-baked. However if I never formulate half-baked ideas, they can never have the chance of becoming something actually cool and fully-baked.
+
+![Ideation Workshop Notes](Media/w7/workshop.jpg)
 
 The first hybrid we came up with was _Sun Rage Game_. This concept kind of made us think of a game called _A Difficult Game About Climbing_ and we took inspiration from that. 
 We came up with the idea of a game where the goal is to get to the sunscreen bottle while avoiding the sun to not get burned. 
@@ -376,3 +379,53 @@ As for the evolving player control, here are some of the ideas I came up with. S
 - can encourage / discourage growth in a specific direction (by creating shaded or sunny spots),
 - can only use abilities a limited amount of times.
 
+### Prototyping
+
+I decided to give planning my levels a shot to see the feel / difficulty increase of my game. 
+I decided to make it go through phases so that the player does not feel super lost and they can gradually be introduced to newness. 
+I planned 10 levels because I do have a tendency of creating a bigger scope than possible a lot of the time.
+If I am successful in creating the 10 levels and I feel happy with them, I will definetly create more, I still have ideas I would love to implement that I have not included here.
+I also decided to plan out the visuals for the level selection menu, which I have a really clear idea of what I want to do with it.
+I want it to be reflective of the levels themselves.
+
+![level planning page 1](Media/w7/prototype1.jpg)
+
+Another aspect I considered was the visuals of the tiles. The circles I am currently using are fine for prototyping, but I want it to have a different aesthetic.
+My first ideas were flowers or mushrooms. I really like both but I wanted to think of other possibilities. In the same vibe, I could go with clovers or coral. 
+I also thought about making something more science related or sci-fi, like cells or alien lifeforms. 
+I didn't like either of these two last ideas, so I will probably go with something simple and nature-related.
+But I am keeping an open-mind to any other ideas and I will see what feels right.
+
+![level and visuals planning page 2](Media/w7/prototype2.jpg)
+
+### What's next?
+
+Now that I have a clearer direction, the next step is to actually start implementing instead of just ideating forever (which I could very easily keep doing).
+The next step for me is to actually solidify the core mechanics before I get too deep into level building.
+
+As much as I like planning out levels and progression, I know that if the base mutation logic isn’t strong enough, the levels won’t matter. 
+So my priority is to implement the more complex colour “personality” logic first and really get that working properly. 
+I want each colour to feel distinct and intentional rather than just being a different shade with the same behaviour. 
+If I can get varying spread speeds, decay timing, directional growth, and interaction rules feeling clean and readable, I think the system will become way more interesting on its own.
+
+After that, I want to experiment with grid size. 
+Right now, I’m not fully convinced the current grid is the best scale. 
+A smaller grid might make things feel tighter and more strategic, while a larger one could make the ecosystem feel more chaotic and alive. 
+I might even change grid size depending on the level to control pacing and difficulty. 
+I don’t want to lock myself into one format too early.
+
+Implementing fully designed levels feels secondary for now. 
+I’ll definitely test the mechanics using simple level setups (like single-goal scenarios), 
+but I’m not going to obsess over polishing progression until I’m confident the system itself is fun. 
+If the mechanics are strong, the levels will naturally become more interesting to design. 
+If they’re weak, no amount of level structure will save them.
+
+So overall:
+1. Refine and expand mutation/personality logic. 
+2. Implement goal / level-end logic 
+2. Test different grid sizes. 
+3. Use simple test levels to evaluate mechanics. 
+4. Only then start committing to structured progression.
+
+I’m trying to be more disciplined about building a strong foundation first instead of jumping ahead to aesthetics or over-scoping. 
+If I can get the base system feeling solid and engaging, everything else will build much more smoothly from there.
