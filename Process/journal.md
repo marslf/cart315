@@ -438,7 +438,7 @@ pivoted to focus on the look/feel prototyping because I had been ignoring it for
 The first thing I worked on was experimenting with pixel art sprites for the tiles. 
 Since I had only been using placeholder circle sprites so far, I wanted to start exploring what the actual aesthetic of the game might look like.
 I used [Piskel](https://www.piskelapp.com/p/create/sprite/) to make them, which was also a bit of an experiment for me because I haven’t really worked in pixel art much before, especially not for games. 
-help figure out a direction, I also made a small [inspiration board on Pinterest](https://pin.it/1IHh6RAth) so I could get a sense of the kind of styles and shapes I was drawn to.
+help figure out a direction, I also made a small inspiration board on Pinterest so I could get a sense of the kind of styles and shapes I was drawn to.
 
 ![pinterest board screenshot](Media/w8/pinterest.png)
 
