@@ -1,3 +1,5 @@
+![Lovers in a Dangerous Spacetime](Media/game_analysis/lovers.jpg)
+
 # Game Analysis: _Lovers in a Dangerous Spacetime_
 
 ## Contextualization
@@ -37,11 +39,14 @@ this game deliberately separates control across the multiple stations within the
 These stations include turrets for attacking enemies, a shield used to block incoming projectiles, an engine that controls the ship’s movement, 
 and a navigation station that allows players to view the map and chart a course through each level.
 
+![Lovers in a Dangerous Spacetime - basic spaceship](Media/game_analysis/spaceship.jpg)
+
 While players are able to unlock several variations of the ship layout as they progress through the game, 
 every ship contains the same basic functional stations.
 Four turret stations are positioned around the circular ship, each controlling a weapon that fires in a specific quadrant.
 The engine station propels the ship forward and determines its movement through space, while the shield station allows players 
 to rotate a protective barrier around the exterior of the ship to block enemy attacks. 
+There is also a special powerful canon/beam with a cooldown for getting out of tough spots.
 Finally, the navigation station displays the level map, helping players locate objectives and trapped creatures that must be rescued.
 
 Because each station can only be operated by a single character at a time and the fact that there are more stations that players, 
@@ -54,49 +59,52 @@ Additionally, the delay caused by the need to move your character between statio
 
 ## Cooperation as a Mechanic
 
-Second, since no singular player can dominate the entirety of the ship's systems at the same time, cooperation becomes a necessary gameplay mechanic, not just 
+Second, since no singular player can dominate the entirety of the ship's systems at the same time, cooperation becomes a necessary gameplay mechanic, not just an optional feature.
+Players must constantly communicate in order to decide who will control which station and when those roles need to change.
+In moments when many enemies are attacking from different directions, one player could operate a turret while another steers the ship, 
+only for both players to suddenly abandon their positions to activate the shield or adjust the ship’s movement and stay alive.
+This forces players to continuously negotiate roles and priorities throughout each encounter.
 
+This dynamic often creates moments of frantic chaotic coordination. 
+Players might need to yell directions at each other, call out enemy positions, or quickly swap stations in order to respond to incoming attacks. 
+Because threats can appear from several sides of the ship at once, players are frequently forced to make quick decisions about which dangers should be prioritized. 
+In these moments, communication becomes just as important as technical skill. 
+The experience of playing _Lovers in a Dangerous Spacetime_ is therefore defined not only by controlling the ship’s systems, 
+but by the ongoing conversation between players as they attempt to manage those systems together.
 
-Shouting directions.
-Switching roles mid-fight.
-Emergency decision-making.
-Overlapping threats on different sides of the ship.
+![Lovers in a Dangerous Spacetime - getting attacked](Media/game_analysis/attack.jpeg)
 
-Chaos is not failure — it is the system.
-The game creates vulnerability by design.
-Communication becomes a mechanic, not just a social bonus.
-
-The game transforms panic into productive coordination.
-
-## Reinventing the Space Shooter
-
-Singular pilot / shared survival
-mastery / fragmented power
-domination / constant compromise
-efficiency / imperfect control
-
-The game shifts the emotional tone from dominance to interdependence.
-It reframes success as collaboration rather than individual skill.
+Importantly, the chaos that emerges from this design is not a sign of failure but a deliberate design aspect of the system itself. 
+The constant need to move between stations and respond to overlapping threats forces players to rely on one another. 
+Instead than rewarding individual skill, the game rewards the ability to coordinate under pressure as a unit. 
+In this way, moments of panic are turn into moments of cooperation, where successful communication allows players succeed.
 
 ## Aesthetic Inversion and Emotional Tone
 
-Neon pinks and blues.
-Heart-shaped power source.
-Cute rescued creatures.
-Robots as antagonists (not militarized human enemies).
+Lovers in a Dangerous Spacetime ultimately reimagines the structure of the traditional space shooter by replacing the fantasy of individual mastery
+typically found in space shooters with a system of collective survival.
+This mechanical shift is further reinforced by the game’s visual and thematic design. 
+Compared to the typical dark, metallic aesthetics commonly associated with space combat games, the _Lovers in a Dangerous Spacetime_ universe is a vibrant world 
+filled with neon colors, heart-shaped technology, and cute creatures that must be rescued from robotic enemies.
+Even the central power source of the universe, the Ardor Reactor, is powered by **love**.
+These playful design choices create a lighter tone than what is typically seen in the genre and align with the game’s emphasis on cooperation. 
+Instead of presenting combat as purely destructive, the visuals help frame the experience around teamwork and helping others.
 
-The aesthetic softens combat.
-Love literally powers the ship.
-The visuals echo the cooperative design.
-
-Aesthetics = not just decoration, ideological reinforcement of the mechanical shift
+![Lovers in a Dangerous Spacetime - the power of love](Media/game_analysis/love.jpg)
 
 ## Conclusion
 
+In conclusion, Lovers in a Dangerous Spacetime stands out within the space shooter genre through its use of decentralized control. 
+By spreading the ship’s functions across multiple stations and requiring players to physically move between them, 
+the game creates a situation where cooperation and communication are necessary in order to succeed. 
+This design turns chaotic moments into opportunities for players to coordinate and support one another. 
+Rather than focusing on a single player mastering every system, the game emphasizes shared responsibility and teamwork. 
+Combined with its bright visuals and playful themes of love and rescue, Lovers in a Dangerous Spacetime offers a different take on the space shooter genre;
+one where success comes from working together.
 
 ### References:
 - [_Lovers in a Dangerous Spacetime_ - Wikipedia](https://en.wikipedia.org/wiki/Lovers_in_a_Dangerous_Spacetime)
-- [_Lovers in a Dangerous Spacetime_ - Main page](https://www.loversinadangerousspacetime.com/)
+- [_Lovers in a Dangerous Spacetime_  - Official website](https://www.loversinadangerousspacetime.com/)
 - [_Lovers in a Dangerous Spacetime_ - Dev Log](https://www.asteroidbase.com/category/devlog/)
 - [Game Analysis Guidelines - MIT](https://ocw.mit.edu/courses/cms-300-introduction-to-videogame-studies-fall-2011/071e671dbde4e7e4578448c75815abf8_MITCMS_300F11_GameAnaGuide.pdf)
 - [How indie devs saved couch multiplayer in the 2010s - PC Gamer](https://www.pcgamer.com/how-indie-devs-saved-couch-multiplayer-in-the-2010s/)
