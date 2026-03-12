@@ -429,3 +429,80 @@ So overall:
 
 I’m trying to be more disciplined about building a strong foundation first instead of jumping ahead to aesthetics or over-scoping. 
 If I can get the base system feeling solid and engaging, everything else will build much more smoothly from there.
+
+# Week 8 - Iterative Prototype 2: Conceptualizing 
+
+This week my brain honestly needed a break so I switched gears from the mechanics aspects (implementation prototyping) and 
+pivoted to focus on the look/feel prototyping because I had been ignoring it for a while.
+
+The first thing I worked on was experimenting with pixel art sprites for the tiles. 
+Since I had only been using placeholder circle sprites so far, I wanted to start exploring what the actual aesthetic of the game might look like.
+I used [Piskel](https://www.piskelapp.com/p/create/sprite/) to make them, which was also a bit of an experiment for me because I haven’t really worked in pixel art much before, especially not for games. 
+help figure out a direction, I also made a small [inspiration board on Pinterest](https://pin.it/1IHh6RAth) so I could get a sense of the kind of styles and shapes I was drawn to.
+
+![pinterest board screenshot](Media/w8/pinterest.png)
+
+I ended up making a few different directions rather than committing to one immediately. The options I explored were: flower variations (single and cluster), coral, and mushrooms. 
+I really like the nature theme, but I just don't know which nature theme specifically I want to stick to yet.
+I saved and tested out my favourites, it was a lot of trial and error though since I had never tried out this style really. 
+I think I will probably stick to the flower theme, but I also really liked how the coral sprite turned out / looked. 
+
+![coral sprite testing](Media/w8/coral_test.png)
+![flower sprite testing](Media/w8/flower_te.png)
+
+Right now I’m leaning toward the flower direction, but I’m not completely sold yet. 
+I want to get some outside opinions and probably make a few more iterations before deciding. 
+Something I did intentionally while making them was keep the sprites white / greyscale. 
+This way the colours can be applied directly in Unity through the SpriteRenderer, meaning I only need one sprite asset and 
+the system can recolour it dynamically depending on the tile state. 
+This keeps things much simpler technically and also makes it easier to experiment visually.
+
+I also spent some time thinking about a title for the game, even if it’s just a placeholder for now. 
+The current working title is Bloom, but I also wrote down a few other options that I like such as Bloom Engine, Chroma Garden, and Petri Garden. 
+I’m honestly not sure yet which direction fits the project best, so I’m planning on asking friends and classmates what they think before committing to anything.
+
+Another thing I worked on was creating a main menu screen. 
+Since the project is starting to take shape, I felt like it would be nice to start structuring it more like an actual game instead of just a prototype scene. 
+I designed some pixel art UI elements including a title placeholder, Play button, Quit button, and a simple background (all using Piskel also).
+
+![title placeholder pixel art](Media/w8/piskel.png)
+
+I then implemented the menu in Unity using a Canvas and wrote a small script to make the buttons functional. 
+The Play button loads the next scene and the Quit button exits the game. 
+I followed a short [YouTube tutorial](https://www.youtube.com/watch?v=zc8ac_qUXQY) to set this up since it was my first time building a menu system like this. 
+I also found a [guide](https://medium.com/@Brian_David/scene-loading-in-unity-a-comprehensive-guide-for-creating-main-menus-ui-elements-842d8ed3d364) online on creating main menus and UI elements which was super clear, conscise and helpful!
+
+![menu screen](Media/w8/menu2.png)
+
+Even though this work was more visual than systemic, it still helped the project feel a lot more cohesive and game-like.
+
+### Next Steps
+
+For the next phase of the project I want to return to the mechanics side and push the system further. 
+Two of the biggest priorities are implementing the more complex spreading/personality logic for the colours and creating the logic that detects when a level is completed.
+Right now the mutation and growth system works, but it still feels pretty basic. 
+I want to expand it so that different colours behave more distinctly and create more interesting interactions on the grid.
+
+Another goal is to build the level selection screen, since the menu currently only has Start and Quit. 
+Having a level select will make testing much easier and will also start structuring the game around the levels I planned around week 7.
+
+Finally, I also want to keep exploring the visual direction of the tiles. 
+The flower sprites are my current favorite, but before committing to them I want to show the different versions to friends and classmates and 
+see which ones people respond to most. Depending on the feedback, I’ll either refine the flower idea further or try another direction entirely.
+
+### Reflection
+
+Even though this week wasn’t super focused on mechanics, I still feel like it was a really useful shift. 
+I had been deep in the logic side of things for a few weeks and I could feel myself starting to get a bit stuck creatively/mentally. 
+Switching to the visual side let me keep moving forward on the project without forcing myself to grind through code when my brain clearly needed a bit of a reset. 
+It also helped me start seeing the project less like a technical prototype and more like an actual game.
+
+Working on the pixel art was also interesting because it’s not something I usually do. 
+I normally lean more toward illustration or other visual styles, so trying pixel art felt a bit unfamiliar at first. 
+Making multiple directions instead of committing immediately helped a lot though. It made the process feel more exploratory and 
+less like I needed to get it “right” on the first try. I also liked the decision to keep the sprites greyscale so 
+Unity can apply the colours dynamically, because it keeps the system flexible while still letting me experiment with aesthetics.
+
+Another thing that felt surprisingly motivating was just having a main menu. It’s a pretty small feature in terms of functionality, 
+but seeing the project open to a start screen instead of jumping straight into a test scene made it feel a lot more like a real game. 
+I think these small structural things help a lot with momentum because they make the project feel more cohesive and intentional overall.
