@@ -430,7 +430,7 @@ So overall:
 I’m trying to be more disciplined about building a strong foundation first instead of jumping ahead to aesthetics or over-scoping. 
 If I can get the base system feeling solid and engaging, everything else will build much more smoothly from there.
 
-# Week 8 - Iterative Prototype 2: Conceptualizing 
+# Week 8 - Iterative Prototype 2: Aesthetics (look/feel focus)
 
 This week my brain honestly needed a break so I switched gears from the mechanics aspects (implementation prototyping) and 
 pivoted to focus on the look/feel prototyping because I had been ignoring it for a while.
