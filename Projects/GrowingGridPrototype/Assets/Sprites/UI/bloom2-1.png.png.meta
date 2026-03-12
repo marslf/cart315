@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a1b8a17ce30d4ce4abdcfd6e861bdddc
+guid: 95ae0c3c5365c2f47be808e724c501c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7767611144667088285
-    second: 1815_square_0
+      213: -792358959097524276
+    second: bloom2-1.png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1815_square_0
+      name: bloom2-1.png_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 24
-        width: 250
-        height: 226
+        x: 17
+        y: 17
+        width: 866
+        height: 308
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 23, y: 0, z: 20, w: 17}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d954f377e291ccb60800000000000000
-      internalID: 7767611144667088285
+      spriteID: ccfc46c89b9f005f0800000000000000
+      internalID: -792358959097524276
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8096fb416cde408439eb1ebb1dfc55cd
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1815_square_0: 7767611144667088285
+      bloom2-1.png_0: -792358959097524276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
