@@ -13,8 +13,15 @@ public class GridManager : MonoBehaviour
     //get a tile at a coordinate (level completion mechanic)
     public Tile GetTileAt(int x, int y)
     {
+        if (grid == null)
+        {
+            Debug.LogWarning("Grid not initialized yet");
+            return null;
+        }
+
         if (x >= 0 && x < width && y >= 0 && y < height)
             return grid[x, y];
+
         return null;
     }
 

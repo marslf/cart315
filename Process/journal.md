@@ -518,10 +518,91 @@ I think these small structural things help a lot with momentum because they make
 
 ---
 
-# Week 8 - Iterative Prototype 3
+# Week 8 - Iterative Prototype 3: Level Logic + Systems 
 
-https://www.udemy.com/tutorial/unity-game-development-by-example/create-2d-target-shooting-game-in-1-hour/
+### Level Logic Iterating
 
-https://www.udemy.com/tutorial/unity-game-development-by-example/create-2d-target-shooting-game-in-1-hour/
+This week was honestly a lot more about figuring things out than making super visible progress.
+It was also a really busy week overall with other classes, so I didn’t get as much time as I would have liked to fully push things forward, 
+but I still made progress on something really important: getting the level completion system working properly.
 
-https://www.youtube.com/watch?v=ducWtRQ9TNo
+I spent most of my time trying to understand how to actually detect when a level is completed in a way that is flexible enough for different goals later on.
+Since each level will have a different condition (specific color in a specific tile, maybe patterns later, etc.), 
+I didn’t want to hard-code something too specific that I would have to redo later.
+
+![level completed console message](Media/proto3/level_complete.png)
+
+I worked on setting up a system where the game checks a specific tile position and compares its color to a goal color.
+I found the [Unity Finishing the Game and Next Steps Tutorial](https://learn.unity.com/tutorial/finishing-the-game-and-next-steps) 
+and [How to make a Simple 2D Game in Unity 2019 - 6.WIN OR LOSE](https://www.youtube.com/watch?v=ducWtRQ9TNo) by Flutter Bros on Youtube both very helpful.
+A big part of this was also learning about coroutines (IEnumerator) and how to delay actions by a frame so that systems initialize 
+the correct order. The [Unity Coroutines Tutorial](https://learn.unity.com/tutorial/coroutines) was helpful for this.
+This ended up being necessary for placing the goal marker properly after the grid is generated.
+
+This process was honestly a bit frustrating at times because things weren’t working and I couldn’t immediately tell why, but once it clicked it made a lot more sense.
+At times, I honestly just had to go to bed and look at it when I woke up in the morning and I was able to figure it out.
+Now that the level completion detection is working, it feels like I’ve set up a really solid foundation that will make building actual levels way more straightforward moving forward.
+
+### Goal Indicator (WIP)
+
+Alongside that, I also started working on a visual indicator for the goal tile.
+Right now I’m using a very simple placeholder (a transparent bubble PNG) just to make sure the system itself works. 
+I am going to make something with Piskel that matches the rest of the style.
+
+![bubble goal marker placeholder](Media/proto3/GoalMarker.png)
+
+The idea is that the player should always clearly see which tile they are trying to influence, 
+especially since the mechanics are more indirect and system-based.
+At the moment, the indicator is still a bit rough and I need to refine how it appears and integrates visually with the tiles, but the base idea is there.
+
+Next week I want to replace the placeholder with something I design myself so it fits better with the overall aesthetic 
+(probably something more nature-related if I stick with the flower direction).
+
+### Mechanism Experimentation
+
+I also started experimenting a bit more with limiting player control, which is something I had been thinking about conceptually last week.
+
+So for this first initial level, I made it so that:
+- the player can only delete tiles (not place them), 
+- and only white + primary colors can appear (level 0 and level 1)
+
+![primary testib](Media/proto3/primary.png)
+
+This already makes the experience feel very different.
+Instead of actively building something, the player is more indirectly shaping the system by removing elements and 
+letting the growth logic do the rest.
+
+I think this direction is really interesting because it pushes the idea that the player isn’t fully in control, 
+which ties back to my original concept of changing abilities and constraints.
+
+I also started thinking more concretely about how I want to introduce mechanics.
+Rather than having explicit tutorial text, I want the game to teach through interaction.
+So instead of explaining mechanics directly, the levels will kind of “hint” at what’s possible and let the player experiment 
+and figure things out themselves.
+
+### Reflection
+
+This week was very much focused on implementation prototyping, even though it didn’t necessarily feel like I was building a lot of new visible features.
+The main question I was trying to answer was: how can I detect level completion in a way that is flexible enough to support different types of goals later on?
+I didn’t want to build something too specific and then have to redo it once the mechanics evolve.
+
+What I learned this week was honestly more about how Unity behaves than just the game itself.
+Things like needing to delay actions by a frame using coroutines, or how small technical details (like color comparison) 
+can completely break a system, were really important realizations.
+I also learned that even if something seems conceptually simple (like “check if this tile is yellow”), 
+actually implementing it in a robust way takes more thought than expected.
+
+Even though progress felt slower, I think this week was important because it helped solidify a core system that everything else will rely on.
+Now that level completion works, the process of actually building levels should be much more straightforward and less experimental.
+
+For next steps, I want to:
+- refine and properly implement the goal indicator visually
+- continue developing the mutation/personality logic
+- start building out a few simple levels to test how everything feels together as a whole
+
+![full grid](Media/proto3/full.png)
+
+I also want to keep exploring how to gradually introduce mechanics to the player without relying on explicit instructions, 
+since that’s an important part of the experience I’m trying to create.
+Overall, even though it felt a bit messy and slower than usual, I think this week helped turn the project from just a system 
+into something that can actually function as a game.

@@ -417,9 +417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a4b109620dd9b46ae7f0a50aaf95cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  targetPosition: {x: 1, y: 1}
+  targetPosition: {x: 7, y: 7}
   goalColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  goalMarkerPrefab: {fileID: 0}
+  goalMarkerPrefab: {fileID: 4166599290430482793, guid: 77d0ebfbd31e25a4d8b5f9e1c8ea292d, type: 3}
 --- !u!4 &1434872495
 Transform:
   m_ObjectHideFlags: 0

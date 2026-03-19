@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public Color goalColor = Color.yellow;
     public GameObject goalMarkerPrefab;
     
-    //
+    //colours can be close enough and still be fine
     bool ColorsAreEqual(Color a, Color b)
     {
         return Mathf.Approximately(a.r, b.r) &&
