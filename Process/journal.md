@@ -37,6 +37,8 @@ One way I thought about improving it would be to simply add music to create a sl
 
 Anyway, I am pretty proud of the end result and I think it is an interesting Make A Thing project.
 
+---
+
 # Week 2 - Exploration Prototype 1 
 
 Due to some small technical issues during the class, we were just told to play around with Unity and to learn to be comfortable using it. 
@@ -54,6 +56,7 @@ I did not know what to expect but turns out it is similar to Unreal Engine in ma
 
 Overall, this week felt more like laying groundwork than producing something finished. While it was less creative than the previous assignment, it helped me feel more prepared to use Unity in future weeks and made the idea of building something from scratch in the engine feel more achievable.
 
+---
 
 # Week 3 - Exploration Prototype 2
 
@@ -114,7 +117,6 @@ Without those constraints, the prototype could easily become frustrating rather 
 
 ![Screenshot of mutate ball script modi](Media/unpredictapawg_mutateball.png)
 
-
 ### Learnings
 
 What I found interesting is that even though the change itself is small, it noticeably alters how the game feels. 
@@ -149,6 +151,8 @@ Overall, I am happy with how this prototype turned out. It feels like a strong e
 how a very small system can meaningfully transform a classic game while still remaining simple to implement. 
 More importantly, it helped me become more comfortable modifying existing mechanics instead of feeling 
 like I always need to invent something entirely new.
+
+---
 
 # Week 4 - Exploration Prototype 3: Emergent Grow System
 
@@ -232,7 +236,9 @@ More than anything, this week helped me become more comfortable letting systems 
 Overall, I see this prototype as a strong proof of concept and a reminder that experimentation often works best 
 when it stays focused and intentionally small.
 
-# Week 6 - Exploration Prototype 4: Emergent Grow System part 2
+---
+
+# Week 5 - Exploration Prototype 4: Emergent Grow System part 2
 
 This week I really focused on added features and fixing certain parts of last week's prototype. 
 
@@ -293,9 +299,10 @@ is to speed up the growth, although I do kind of like the slowness and meditativ
 I am still overall pretty happy with this prototype.
 
 ![Grid phase 1 v2](Media/w5/w5_02.png)
-<<<<<<< HEAD
 
-# Week 7 - Iterative Prototype 1: Conceptualizing 
+---
+
+# Week 6 - Iterative Prototype 1: Conceptualizing 
 
 ### Initial brainstorm
 
@@ -430,7 +437,9 @@ So overall:
 I’m trying to be more disciplined about building a strong foundation first instead of jumping ahead to aesthetics or over-scoping. 
 If I can get the base system feeling solid and engaging, everything else will build much more smoothly from there.
 
-# Week 8 - Iterative Prototype 2: Aesthetics (look/feel focus)
+---
+
+# Week 7 - Iterative Prototype 2: Aesthetics (look/feel focus)
 
 This week my brain honestly needed a break so I switched gears from the mechanics aspects (implementation prototyping) and 
 pivoted to focus on the look/feel prototyping because I had been ignoring it for a while.
@@ -506,3 +515,8 @@ Unity can apply the colours dynamically, because it keeps the system flexible wh
 Another thing that felt surprisingly motivating was just having a main menu. It’s a pretty small feature in terms of functionality, 
 but seeing the project open to a start screen instead of jumping straight into a test scene made it feel a lot more like a real game. 
 I think these small structural things help a lot with momentum because they make the project feel more cohesive and intentional overall.
+
+---
+
+# Week 8 - Iterative Prototype 3
+

@@ -9,6 +9,14 @@ public class GridManager : MonoBehaviour
     [Header("Grid Settings")] public GameObject tilePrefab;
     public int width = 8;
     public int height = 8;
+    
+    //get a tile at a coordinate (level completion mechanic)
+    public Tile GetTileAt(int x, int y)
+    {
+        if (x >= 0 && x < width && y >= 0 && y < height)
+            return grid[x, y];
+        return null;
+    }
 
     private Tile[,] grid;
 
