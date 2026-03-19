@@ -520,3 +520,8 @@ I think these small structural things help a lot with momentum because they make
 
 # Week 8 - Iterative Prototype 3
 
+https://www.udemy.com/tutorial/unity-game-development-by-example/create-2d-target-shooting-game-in-1-hour/
+
+https://www.udemy.com/tutorial/unity-game-development-by-example/create-2d-target-shooting-game-in-1-hour/
+
+https://www.youtube.com/watch?v=ducWtRQ9TNo

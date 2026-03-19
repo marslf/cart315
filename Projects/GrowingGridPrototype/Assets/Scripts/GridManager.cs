@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour
 
     private Tile[,] grid;
 
-    [Header("Growth Settings")] public float spawnInterval = 1f;
+    [Header("Growth Settings")] public float spawnInterval = 0.2f; // 1f = slower / 0.2f = faster growth
     
     int CountNeighbors(int x, int y)
     {
@@ -102,33 +102,78 @@ public class GridManager : MonoBehaviour
         // Skip if already filled
         if (tile.isFilled) return;
 
-        int neighbors = CountNeighbors(x, y);
-        float growChance = neighbors > 0 ? 0.8f : 0.3f;
+        List<Color> neighbors = tileColorNeighbors(x, y);
+
+        float growChance = neighbors.Count > 0 ? 0.9f : 0.05f; // faster + less random white spawning
 
         if (Random.value < growChance)
         {
             Color newColor;
 
-            // Tiered mutation logic
-            if (tileColorNeighbors(x, y).Count == 0)
+            if (neighbors.Count == 0)
             {
-                // No neighbors = only white
+                // VERY rare white spawn 
                 newColor = Color.white;
             }
             else
             {
-                // If neighbors = pick a neighbor's color and apply mutation
-                List<Color> neighborColors = tileColorNeighbors(x, y);
-                Color baseColor = neighborColors[Random.Range(0, neighborColors.Count)];
+                // Pick neighbor color
+                Color baseColor = neighbors[Random.Range(0, neighbors.Count)];
 
-                // Temporarily set tile color to neighbor => tiered mutation
+                // Use mutation logic based on that color
                 tile.tileColor = baseColor;
                 newColor = tile.GetMutationColor();
+
+                // LIMIT to only white + primaries (Level 0 + 1) (for first level)
+                if (!(newColor == Color.white || newColor == Color.red || newColor == Color.blue || newColor == Color.yellow))
+                {
+                    newColor = baseColor;
+                }
             }
 
             tile.Fill(newColor);
         }
     }
+    
+    // TryGrowRandomTile VERSION 1
+    // void TryGrowRandomTile()
+    // {
+    //     // Pick a random tile
+    //     int x = Random.Range(0, width);
+    //     int y = Random.Range(0, height);
+    //
+    //     Tile tile = grid[x, y];
+    //
+    //     // Skip if already filled
+    //     if (tile.isFilled) return;
+    //
+    //     int neighbors = CountNeighbors(x, y);
+    //     float growChance = neighbors > 0 ? 0.8f : 0.3f;
+    //
+    //     if (Random.value < growChance)
+    //     {
+    //         Color newColor;
+    //
+    //         // Tiered mutation logic
+    //         if (tileColorNeighbors(x, y).Count == 0)
+    //         {
+    //             // No neighbors = only white
+    //             newColor = Color.white;
+    //         }
+    //         else
+    //         {
+    //             // If neighbors = pick a neighbor's color and apply mutation
+    //             List<Color> neighborColors = tileColorNeighbors(x, y);
+    //             Color baseColor = neighborColors[Random.Range(0, neighborColors.Count)];
+    //
+    //             // Temporarily set tile color to neighbor => tiered mutation
+    //             tile.tileColor = baseColor;
+    //             newColor = tile.GetMutationColor();
+    //         }
+    //
+    //         tile.Fill(newColor);
+    //     }
+    // }
 
     // Helper = list of neighbor colors that are filled
     List<Color> tileColorNeighbors(int x, int y)
