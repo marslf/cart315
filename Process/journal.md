@@ -606,3 +606,25 @@ I also want to keep exploring how to gradually introduce mechanics to the player
 since that’s an important part of the experience I’m trying to create.
 Overall, even though it felt a bit messy and slower than usual, I think this week helped turn the project from just a system 
 into something that can actually function as a game.
+
+---
+
+# Week 9 - Iterative Prototype 4
+
+### Project Check-In
+
+It was the project check-in during class this week. While I was waiting for my turn to discuss my progress and what my deliverable will be,
+I was talking to a few classmates, and we were showing each each-other our projects.
+This discussion eventually led to thinking about my game as more of an idle game, rather than a puzzle game.
+I really like the idea and it fits with the aesthetics I've been going for and the "feel", relaxing, cute, chill. 
+The details and like specifics still had to be worked out of course, but I really liked this shift in direction for my project.
+I don't know how I didn't see that possibility before, I guess I was so focused on everything else 
+that I didn't question it all that much at this point and stuck to my initial idea and ran with it. 
+
+Soon after, it was my turn for the project check-in. I didn't have something super concrete at this point because
+I had just decided to completely shift gears. Anyways, we established my final deliverable:
+
+- Single screen idle game. 
+- Players have some sort of goal which leads to expanding the grid and mechanic upgrades. 
+- Possible: audio
+

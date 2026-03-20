@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     IEnumerator DelayedStart()
     {
         yield return null; // force to wait 1 frame 
-        PlaceGoalMarker();
+        //PlaceGoalMarker();
     }
 
     void PlaceGoalMarker()
