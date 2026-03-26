@@ -1,13 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Goal Settings")]
+    [System.Serializable]
+    public class ColorGoal
+    {
+        public Color color;
+        public int targetCount;
+    }
 
-    public Color goalColor = Color.yellow;
-    
-    public int targetCount = 10;
+    [Header("Goal Settings")]
+    public ColorGoal[] goals;
     
     //colours can be close enough and still work
     bool ColorsAreEqual(Color a, Color b)
@@ -29,7 +34,8 @@ public class LevelManager : MonoBehaviour
         CheckGoal();
     }
 
-    void CheckGoal()
+    //previous checkgoal (before i started working on phase 2
+    /*void CheckGoal()
     {
         if (goalReached) return;
 
@@ -41,18 +47,46 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Goal Reached!");
             goalReached = true;
         }
+    }*/
+    
+    void CheckGoal()
+    {
+        if (goalReached) return;
+
+        bool allGoalsMet = true;
+
+        foreach (ColorGoal goal in goals)
+        {
+            int count = GridManager.Instance.CountTilesOfColor(goal.color);
+
+            if (count < goal.targetCount)
+            {
+                allGoalsMet = false;
+                break;
+            }
+        }
+
+        bool isFull = GridManager.Instance.IsGridFull();
+
+        if (allGoalsMet && isFull)
+        {
+            Debug.Log("Goal Reached!");
+            goalReached = true;
+        }
     }
     
     IEnumerator HandlePhaseComplete()
     {
-        Debug.Log("Resetting grid...");
+        Debug.Log("Phase complete...");
 
-        yield return new WaitForSeconds(0.5f); // small pause 
+        yield return new WaitForSeconds(0.5f); 
 
-        ResetGrid();
+        // ResetGrid(); // fordebugging  / testing before phase 2 was added 
+
+		SceneManager.LoadScene("Phase2");
     }
     
-    void OnGUI()
+    /*void OnGUI()
     {
         int count = GridManager.Instance.CountTilesOfColor(goalColor);
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 2f);
@@ -61,6 +95,49 @@ public class LevelManager : MonoBehaviour
         if (goalReached)
         {
             if (GUI.Button(new Rect(10, 50, 120, 40), "Next Phase"))
+            {
+                StartCoroutine(HandlePhaseComplete());
+            }
+        }
+    }*/
+    
+    string GetColorName(Color color)
+    {
+        if (ColorsAreEqual(color, Color.red)) return "Red";
+        if (ColorsAreEqual(color, Color.blue)) return "Blue";
+        if (ColorsAreEqual(color, Color.yellow)) return "Yellow";
+
+        if (ColorsAreEqual(color, new Color(0f, 1f, 0f))) return "Green";
+        if (ColorsAreEqual(color, new Color(1f, 0.5f, 0f))) return "Orange";
+        if (ColorsAreEqual(color, new Color(0.5f, 0f, 0.5f))) return "Purple";
+
+        if (ColorsAreEqual(color, Color.white)) return "White";
+
+        return "Unknown";
+    }
+    
+    //NEW GUI
+    void OnGUI()
+    {
+        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 2f);
+
+        float yOffset = 10;
+
+        foreach (ColorGoal goal in goals)
+        {
+            int count = GridManager.Instance.CountTilesOfColor(goal.color);
+
+            GUI.Label(new Rect(10, yOffset, 300, 30),
+                GetColorName(goal.color) +  count + " / " + goal.targetCount);
+
+            yOffset += 30;
+        }
+
+        yOffset += 40;
+
+        if (goalReached)
+        {
+            if (GUI.Button(new Rect(10, yOffset, 150, 50), "Next Phase"))
             {
                 StartCoroutine(HandlePhaseComplete());
             }
