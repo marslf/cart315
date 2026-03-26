@@ -660,3 +660,70 @@ However, the more I think about it, the more it feels like a better fit for both
 
 ## Part 2: Implementation
 
+### Core Loop
+
+This week I focused on actually implementing the new idle game direction and building the core gameplay loop.
+Since the pivot changed how the game is structured, I tried to keep things simple and focus only on the essential systems needed to make the loop work.
+
+The first thing I worked on was creating a tile counting system.
+Instead of checking a single tile like I was doing before, I needed a way to count how many tiles of a specific color exist across the entire grid.
+This allows the game to track goals like “reach 10 yellow tiles,” which fits much better with the idea of observing and influencing a system rather than solving a specific puzzle.
+
+Once that was working, I implemented a new goal system based on reaching a certain number of tiles of a given color.
+I also added a second condition where the grid needs to be fully filled in order to complete the phase.
+This makes the goal feel a bit more intentional, since the player has to both guide the system toward a color and let it fully grow.
+
+After that, I set up a phase completion system.
+Instead of automatically resetting when the goal is reached, I added a simple button that appears when the conditions are met.
+The player can then choose when to move on to the next phase.
+I think this works better for the pacing, since it gives a moment to observe the finished state before resetting.
+
+To help visualize the goals, I also added a very simple GUI using OnGUI that displays the current progress 
+This is very minimal and mostly for debugging, but it makes it much easier to understand what’s happening while testing.
+
+![phase 1 complete](Media/w10-next-phase.png)
+
+### Phase 2 Setup
+
+Once the core loop was working, I started setting up the next phase of the game.
+I created a second scene with a larger grid and multiple color goals simultaneously. 
+
+To support this, I updated the goal system so that it can handle multiple color conditions instead of just one.
+This makes it much more flexible and allows each phase to introduce more complexity without changing the underlying logic.
+
+I haven’t fully finalized Phase 2 yet, but the structure is in place and working.
+
+![phase 2 base](Media/w10-phase2.png)
+![multiple win conditions](Media/w10-level-goals.png)
+
+### Visual Updates
+
+I also spent a bit of time working on the visual side.
+I created a new pixel art flower sprite to replace the placeholder I was using before.
+The previous one worked for testing, but it didn’t really match the direction I want aesthetically.
+
+This new version feels closer to the style I’m going for, even though it’s still pretty simple.
+I want the visuals to feel soft and calm, so I’ll likely keep iterating on this.
+
+![new flower sprite](Media/w10-flower-v3-1.png)
+![new flower sprite implemented](Media/w10-new-flower.png)
+
+## Reflection
+
+This week felt much more productive in terms of visible progress compared to last week.
+The pivot to an idle game was a big shift, but implementing the core loop made everything feel a lot clearer and more cohesive.
+
+The main thing I was reminded of is how important it is to simplify systems and build them in a modular way.
+By separating things like tile counting, goal checking, and phase transitions, it became much easier to expand the game without breaking everything.
+
+There were still some small technical challenges, but overall things started to come together in a way that feels much more like an actual game.
+
+For next steps, I want to:
+
+- finalize Phase 2 and make sure the multi-goal system feels good 
+- start creating additional phases now that the structure is in place 
+- add a transition or feedback moment when a phase is completed (visuals and possibly sound)
+- continue refining the flower sprite and start working on backgrounds and overall visuals
+
+This week came with a lot of change and adapting, but it felt really productive and motivating now that the project feels
+this complete and directionally clear.
