@@ -611,20 +611,52 @@ into something that can actually function as a game.
 
 # Week 9 - Iterative Prototype 4
 
+## Part 1: Direction Pivot
+
 ### Project Check-In
 
 It was the project check-in during class this week. While I was waiting for my turn to discuss my progress and what my deliverable will be,
 I was talking to a few classmates, and we were showing each each-other our projects.
 This discussion eventually led to thinking about my game as more of an idle game, rather than a puzzle game.
-I really like the idea and it fits with the aesthetics I've been going for and the "feel", relaxing, cute, chill. 
-The details and like specifics still had to be worked out of course, but I really liked this shift in direction for my project.
-I don't know how I didn't see that possibility before, I guess I was so focused on everything else 
-that I didn't question it all that much at this point and stuck to my initial idea and ran with it. 
 
-Soon after, it was my turn for the project check-in. I didn't have something super concrete at this point because
-I had just decided to completely shift gears. Anyways, we established my final deliverable:
+Up until now, I had been approaching it as a puzzle game, but through that conversation I realized that the system 
+I built actually lends itself really well to an idle game instead.
+The automatic growth, mutation, and evolving grid already feel like a system that can run on its own, and the player 
+influencing it indirectly fits much more naturally within an idle structure.
 
-- Single screen idle game. 
-- Players have some sort of goal which leads to expanding the grid and mechanic upgrades. 
-- Possible: audio
+I honestly don’t know how I didn’t consider that earlier, but I think I was just very locked into my original idea and 
+didn’t question it as much as I should have.
+
+### Updated Direction
+
+After discussing with my professor, we clarified the new direction for the final project:
+
+- Single-screen idle game 
+- A goal-based progression system 
+- Expanding grid and mechanic upgrades between phases 
+- Possibly adding audio later (not a core element)
+
+The idea now is that the game will be structured in phases.
+The player starts with a small grid and limited control, and once they reach a goal, the system resets, expands, and introduces new possibilities.
+
+I also want to include a simple upgrade system where the player earns points after each phase and can choose how to influence the system further.
+This ties back to my earlier idea about limiting and changing player control, but now it becomes something that evolves over time rather than changing per level.
+
+### Implementation Plan
+
+Because this is a pretty big shift, my main focus right now is simplifying things and building a strong core loop before expanding further.
+
+The first step is to implement a basic goal system, such as reaching a certain number of a specific color.
+From there, I want to create a simple phase reset where the grid clears and restarts once the goal is reached.
+
+This will allow me to establish the core gameplay loop:
+grow ⇒ influence ⇒ reach goal ⇒ reset ⇒ expand and upgrade
+
+Once that loop works, I can start layering in upgrades and more complex mechanics.
+
+This shift in direction felt a bit overwhelming at first because it changes how I need to think about the entire project.
+However, the more I think about it, the more it feels like a better fit for both the system I built and the aesthetic direction I’m interested in.
+
+
+## Part 2: Implementation
 
