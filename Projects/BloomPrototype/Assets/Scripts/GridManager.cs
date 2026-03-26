@@ -10,6 +10,49 @@ public class GridManager : MonoBehaviour
     public int width = 8;
     public int height = 8;
     
+    public int CountTilesOfColor(Color targetColor)
+    {
+        int count = 0;
+    
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Tile tile = grid[x, y];
+    
+                if (tile.isFilled && ColorsAreEqual(tile.tileColor, targetColor))
+                {
+                    count++;
+                }
+            }
+        }
+    
+        return count;
+    }
+    
+    bool ColorsAreEqual(Color a, Color b)
+    {
+        return Mathf.Approximately(a.r, b.r) &&
+               Mathf.Approximately(a.g, b.g) &&
+               Mathf.Approximately(a.b, b.b);
+    }
+
+	public bool IsGridFull()
+	{
+    	for (int x = 0; x < width; x++)
+    	{
+        	for (int y = 0; y < height; y++)
+            {
+            	if (!grid[x, y].isFilled)
+            	{
+                	return false;
+            	}
+        	}
+    	}
+
+    	return true;
+	}
+    
     //get a tile at a coordinate (level completion mechanic)
     public Tile GetTileAt(int x, int y)
     {
@@ -52,6 +95,24 @@ public class GridManager : MonoBehaviour
         return count;
     }
 
+    public void ClearGrid()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                grid[x, y].Clear();
+            }
+        }
+    }
+
+    public void SeedCenter()
+    {
+        int startX = width / 2;
+        int startY = height / 2;
+        grid[startX, startY].Fill(Color.white);
+    }
+    
     void Awake()
     {
         Instance = this;

@@ -4,61 +4,75 @@ using System.Collections;
 public class LevelManager : MonoBehaviour
 {
     [Header("Goal Settings")]
-    public Vector2Int targetPosition = new Vector2Int(7, 7); 
+
     public Color goalColor = Color.yellow;
-    public GameObject goalMarkerPrefab;
     
-    //colours can be close enough and still be fine
+    public int targetCount = 10;
+    
+    //colours can be close enough and still work
     bool ColorsAreEqual(Color a, Color b)
     {
         return Mathf.Approximately(a.r, b.r) &&
                Mathf.Approximately(a.g, b.g) &&
                Mathf.Approximately(a.b, b.b);
     }
+    
+    bool goalReached = false;
 
     void Start()
     {
-        StartCoroutine(DelayedStart());
-    }
-
-    IEnumerator DelayedStart()
-    {
-        yield return null; // force to wait 1 frame 
-        //PlaceGoalMarker();
-    }
-
-    void PlaceGoalMarker()
-    {
-        Tile targetTile = GridManager.Instance.GetTileAt(targetPosition.x, targetPosition.y);
-
-        if (targetTile != null)
-        {
-            Debug.Log("Placing marker at: " + targetTile.transform.position);
-            Instantiate(goalMarkerPrefab, targetTile.transform.position, Quaternion.identity);
-        }
+        
     }
     
     void Update()
     {
-        CheckWinCondition();
+        CheckGoal();
     }
 
-    void CheckWinCondition()
+    void CheckGoal()
     {
-        Tile targetTile = GridManager.Instance.GetTileAt(targetPosition.x, targetPosition.y);
+        if (goalReached) return;
 
-        if (targetTile != null && targetTile.isFilled && ColorsAreEqual(targetTile.tileColor, goalColor))
+        int currentCount = GridManager.Instance.CountTilesOfColor(goalColor);
+		bool isFull = GridManager.Instance.IsGridFull();
+
+        if (currentCount >= targetCount && isFull)
         {
-            Debug.Log("Level Complete!");
+            Debug.Log("Goal Reached!");
+            goalReached = true;
         }
-        
-         //DEBUGGING WIN CONDITION
-        // if (targetTile != null)
-        // {
-        //     Debug.Log("Checking tile at: " + targetPosition + 
-        //               " | Filled: " + targetTile.isFilled + 
-        //               " | Color: " + targetTile.tileColor);
-        // }
-        
     }
+    
+    IEnumerator HandlePhaseComplete()
+    {
+        Debug.Log("Resetting grid...");
+
+        yield return new WaitForSeconds(0.5f); // small pause 
+
+        ResetGrid();
+    }
+    
+    void OnGUI()
+    {
+        int count = GridManager.Instance.CountTilesOfColor(goalColor);
+        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 2f);
+        GUI.Label(new Rect(10, 10, 200, 30), "Yellow: " + count + " / " + targetCount);
+
+        if (goalReached)
+        {
+            if (GUI.Button(new Rect(10, 50, 120, 40), "Next Phase"))
+            {
+                StartCoroutine(HandlePhaseComplete());
+            }
+        }
+    }
+    
+    void ResetGrid()
+    {
+        GridManager.Instance.ClearGrid();
+        GridManager.Instance.SeedCenter();
+
+        goalReached = false;
+    }
+    
 }
