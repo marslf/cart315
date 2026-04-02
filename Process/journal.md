@@ -727,3 +727,78 @@ For next steps, I want to:
 
 This week came with a lot of change and adapting, but it felt really productive and motivating now that the project feels
 this complete and directionally clear.
+
+---
+
+# Week 10 - Iterative Prototype 5
+
+## Level Manager Improvements
+
+This week I focused a lot on refining how the game senses and tracks objectives.
+Instead of using the Inspector to set phase goals, I moved all the logic into the LevelManager itself.
+This makes it way smoother and more reliable, especially with colors and phase detection, since I was running into weird issues before.
+
+I also limited the colors for Phase 1, which acts as an intro phase.
+Keeping the palette smaller here makes it easier for players to get a feel for the system without being overwhelmed.
+
+![phase 1](Media/w11/phase1.png)
+![phase 2](Media/w11/phase2.png)
+
+## Visual Updates
+
+I created a background for the main phases.
+The main menu still has small white flowers, but for the actual phases I made a very similar background where the flowers are smaller 
+and only appear around the perimeter.
+This way, the background doesn’t interfere with the flower tiles. I've used Piskel to make all my assets for this, it has been super helpful and easy to use.
+
+![new background](Media/w11/background.png)
+
+
+I also recolored the flower tiles to make them brighter and less dull.
+I mostly adjusted the grey values to lighten them and changed the outline to a dark grey instead of a pure black, 
+which makes the tiles look brighter but less harsh on the background.
+
+![new flower - brighter ](Media/w11/new-flower-bright.png)
+![new flower - outline ](Media/w11/new-flower-outline.png)
+
+## Phase 3 and 4 Mechanics
+
+The biggest focus this week was definitely Phase 3 and Phase 4 and creating unique effects for each phase.
+
+![effect prefabs](Media/w11/prefabs.png)
+
+For Phase 3, I implemented the watering mechanic, which took a lot of iteration to get right.
+At first, I just had it increase a tile’s “watered” state, but it didn’t feel meaningful—the effect was too subtle and players couldn’t really see the impact.
+I went through multiple rounds of tweaking: adjusting how much each water action spreads, how it interacts with neighboring tiles, and how it visually updates.
+I also added a visual indicator under the tile (a blue circle with a darker green base) so the player can clearly see which tiles have been watered.
+This feedback made it feel like the mechanic actually matters, instead of being just a button press. 
+I had to iterate a few times with the color and shape of the indicator but ended up with something I liked, but I can always rework if I have the time.
+
+![watering mechanic code](Media/w11/gridmanager-water.png)
+![watering mechanic](Media/w11/watering-v2.png)
+
+Phase 4 builds on this but with fertilizer, which mutates the surrounding tiles.
+I reused the same base logic as watering but flipped it so the effect now spreads mutations outward in all directions.
+I also added a yellow circle around fertilized tiles to clearly differentiate it from watering.
+The iterative process here was key: I tried different ways for the mutations to propagate, tested which felt intuitive to the player, 
+and adjusted the visuals so it’s immediately understandable what’s happening.
+
+![fertilizer mechanic code](Media/w11/gridmanager-fertlizer.png)
+![fertilizer mechanic](Media/w11/phase4-fertlizer.png)
+
+## Next Steps / Final Week Plan
+
+For the final week, I want to dedicate as much time as possible to finishing everything up.
+I have a few big goals but with everything I've done this semester this final push feels possible:
+
+- Make a nicer objective UI so goals feel clearer 
+- Tweak the growing speed of tiles so it feels more dynamic 
+- Add another phase if possible 
+- Add tile selection with arrow keys (for pruning and influencing) instead of relying on mouse clicks 
+- Create an ending/“thanks for playing” screen 
+- (Less important) add music and animations for tile growth and phase transitions 
+- (Less important) redo visuals like the start screen to make everything feel polished
+
+Overall, this week was a big step toward making the game feel more like a complete experience.
+The core mechanics are in place, the visuals are starting to feel cohesive, 
+and the next week is all about polishing, expanding, and adding finishing touches.
