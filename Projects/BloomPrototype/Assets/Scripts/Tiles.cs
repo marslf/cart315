@@ -7,8 +7,19 @@ using UnityEngine;
  
      private SpriteRenderer sr;
      
+     // watering mechanic
      public bool isWatered = false;
-     public GameObject waterVisual; 
+     public GameObject waterVisualPrefab;
+     private GameObject waterVisualInstance;
+     
+     //fertilizer mechanics
+     public bool isFertilized = false;
+     public GameObject fertilizerVisualPrefab;
+     private GameObject fertilizerVisualInstance;
+     
+     
+     public int gridX;
+     public int gridY;
      
      private static Color[] primaries = { Color.red, Color.blue, Color.yellow };
         private static Color[] secondaries = {
@@ -23,7 +34,11 @@ using UnityEngine;
             sr.color = Color.black; // empty at start
         }
         
-        public void SetCoordinates(int x, int y) { }
+        public void SetCoordinates(int x, int y)
+        {
+            gridX = x;
+            gridY = y;
+        }
         
         public void Fill(Color newColor)
         {
@@ -36,8 +51,22 @@ using UnityEngine;
         {
             isFilled = false;
             sr.color = Color.black;
-        }
+            
+            if (waterVisualInstance != null) // watering mechanic
+            {
+                Destroy(waterVisualInstance);
+            }
 
+            isWatered = false;
+            
+            if (fertilizerVisualInstance != null)
+            {
+                Destroy(fertilizerVisualInstance);
+            }
+
+            isFertilized = false;
+        }
+        
         void OnMouseOver()
         {
             if (Input.GetMouseButtonDown(0) && isFilled)
@@ -45,9 +74,16 @@ using UnityEngine;
                 Clear();
             }
 
-            if (Input.GetMouseButtonDown(1) && !isFilled)
+            if (Input.GetMouseButtonDown(1) && isFilled)
             {
-                Fill(GetRandomPaletteColor());
+                if (GridManager.Instance.currentPhase == 3)
+                {
+                    Water();
+                }
+                else if (GridManager.Instance.currentPhase >= 4)
+                {
+                    Fertilize();
+                }
             }
         }
 
@@ -93,4 +129,49 @@ using UnityEngine;
             };
             return palette[Random.Range(0, palette.Length)];
         }
+        
+        // WATERING
+        public void Water()
+        {
+            if (isWatered) return;
+
+            isWatered = true;
+
+            Debug.Log("WATERING tile at " + gridX + ", " + gridY);
+
+            if (waterVisualPrefab != null)
+            {
+                waterVisualInstance = Instantiate(
+                    waterVisualPrefab,
+                    transform.position,
+                    Quaternion.identity,
+                    transform
+                );
+            }
+            
+            GridManager.Instance.ApplyWaterEffect(this);
+        }
+        
+        // FERTILIZER
+        public void Fertilize()
+        {
+            if (isFertilized) return;
+
+            isFertilized = true;
+
+            Debug.Log("FERTILIZING tile at " + gridX + ", " + gridY);
+
+            if (fertilizerVisualPrefab != null)
+            {
+                fertilizerVisualInstance = Instantiate(
+                    fertilizerVisualPrefab,
+                    transform.position,
+                    Quaternion.identity,
+                    transform
+                );
+            }
+
+            GridManager.Instance.ApplyFertilizerEffect(this);
+        }
+        
  }

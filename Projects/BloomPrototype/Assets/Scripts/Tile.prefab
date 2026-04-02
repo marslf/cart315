@@ -132,7 +132,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.78, y: 4.78}
+    oldSize: {x: 0.23339844, y: 0.23339844}
     newSize: {x: 4.78, y: 4.78}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -154,6 +154,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   isFilled: 0
   tileColor: {r: 0, g: 0, b: 0, a: 0}
+  isWatered: 0
+  waterVisualPrefab: {fileID: 917352135289592566, guid: fa8684f3c3bc08c4e8a66f4f20191a99, type: 3}
+  isFertilized: 0
+  fertilizerVisualPrefab: {fileID: 917352135289592566, guid: 36f11ff6ea34b5449b3f0ba23035c561, type: 3}
+  gridX: 0
+  gridY: 0
 --- !u!58 &2681277825330985855
 CircleCollider2D:
   m_ObjectHideFlags: 0
