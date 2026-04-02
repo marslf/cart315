@@ -7,6 +7,9 @@ using UnityEngine;
  
      private SpriteRenderer sr;
      
+     public bool isWatered = false;
+     public GameObject waterVisual; 
+     
      private static Color[] primaries = { Color.red, Color.blue, Color.yellow };
         private static Color[] secondaries = {
             new Color(0f, 1f, 0f),     // green

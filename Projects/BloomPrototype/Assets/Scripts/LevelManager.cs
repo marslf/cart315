@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
 
         if (sceneName == "Phase1") currentPhase = 1;
         else if (sceneName == "Phase2") currentPhase = 2;
+        else if (sceneName == "Phase3") currentPhase = 3;
     }
     
     void Update()
