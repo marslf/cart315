@@ -4,18 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    // PREVIOUS GOAL SETTING VERSION (in inspector)
-    /*[System.Serializable]
-    public class ColorGoal
-    {
-        public Color color;
-        public int targetCount;
-    }
-
-    [Header("Goal Settings")]
-    public ColorGoal[] goals;*/
+    int currentPhase = 1; // define phase (goal setting)
     
-    //colours can be close enough and still work
     bool ColorsAreEqual(Color a, Color b)
     {
         return Mathf.Approximately(a.r, b.r) &&
@@ -27,7 +17,10 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "Phase1") currentPhase = 1;
+        else if (sceneName == "Phase2") currentPhase = 2;
     }
     
     void Update()
@@ -40,26 +33,28 @@ public class LevelManager : MonoBehaviour
     {
         if (goalReached) return;
 
-        // PREVIOUS GOAL SETTING VERSION (in inspector)
-        /*bool allGoalsMet = true;
-
-        foreach (ColorGoal goal in goals)
-        {
-            int count = GridManager.Instance.CountTilesOfColor(goal.color);
-
-            if (count < goal.targetCount)
-            {
-                allGoalsMet = false;
-                break;
-            }
-        }*/
-
         bool isFull = GridManager.Instance.IsGridFull();
 
-        if (allGoalsMet && isFull)
+        if (currentPhase == 1)
         {
-            Debug.Log("Goal Reached!");
-            goalReached = true;
+            int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+
+            if (yellow >= 10 && isFull)
+            {
+                Debug.Log("Phase 1 Complete!");
+                goalReached = true;
+            }
+        }
+        else if (currentPhase == 2)
+        {
+            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
+
+            if (blue >= 10 && purple >= 5 && isFull)
+            {
+                Debug.Log("Phase 2 Complete!");
+                goalReached = true;
+            }
         }
     }
     
@@ -74,20 +69,6 @@ public class LevelManager : MonoBehaviour
 		SceneManager.LoadScene("Phase2");
     }
     
-    /*void OnGUI()
-    {
-        int count = GridManager.Instance.CountTilesOfColor(goalColor);
-        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 2f);
-        GUI.Label(new Rect(10, 10, 200, 30), "Yellow: " + count + " / " + targetCount);
-
-        if (goalReached)
-        {
-            if (GUI.Button(new Rect(10, 50, 120, 40), "Next Phase"))
-            {
-                StartCoroutine(HandlePhaseComplete());
-            }
-        }
-    }*/
     
     string GetColorName(Color color)
     {
@@ -104,25 +85,28 @@ public class LevelManager : MonoBehaviour
         return "Unknown";
     }
     
-    //NEW GUI
     void OnGUI()
     {
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 2f);
 
         float yOffset = 10;
 
-        // PREVIOUS GOAL SETTING VERSION (in inspector)
-        /*foreach (ColorGoal goal in goals)
+        if (currentPhase == 1)
         {
-            int count = GridManager.Instance.CountTilesOfColor(goal.color);
+            int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+            GUI.Label(new Rect(10, yOffset, 300, 30), "Yellow " + yellow + " / 10");
+        }
+        else if (currentPhase == 2)
+        {
+            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
 
-            GUI.Label(new Rect(10, yOffset, 300, 30),
-                GetColorName(goal.color) +  count + " / " + goal.targetCount);
-
+            GUI.Label(new Rect(10, yOffset, 300, 30), "Blue " + blue + " / 10");
             yOffset += 30;
-        }*/
+            GUI.Label(new Rect(10, yOffset, 300, 30), "Purple " + purple + " / 5");
+        }
 
-        yOffset += 40;
+        yOffset += 50;
 
         if (goalReached)
         {

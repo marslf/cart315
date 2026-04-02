@@ -372,6 +372,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 977154549939129187, guid: f35495cbd34a9ec449963a4487573e3f, type: 3}
   width: 12
   height: 8
+  currentPhase: 1
   spawnInterval: 2
 --- !u!4 &1322722206
 Transform:
@@ -432,11 +433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a4b109620dd9b46ae7f0a50aaf95cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  goals:
-  - color: {r: 0, g: 0, b: 0, a: 0}
-    targetCount: 0
-  - color: {r: 0, g: 0, b: 0, a: 0}
-    targetCount: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

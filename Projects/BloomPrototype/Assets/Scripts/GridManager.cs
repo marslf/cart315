@@ -30,6 +30,8 @@ public class GridManager : MonoBehaviour
         return count;
     }
     
+    public int currentPhase = 1; // define phase
+    
     bool ColorsAreEqual(Color a, Color b)
     {
         return Mathf.Approximately(a.r, b.r) &&
@@ -70,7 +72,7 @@ public class GridManager : MonoBehaviour
 
     private Tile[,] grid;
 
-    [Header("Growth Settings")] public float spawnInterval = 0.2f; // 1f = slower / 0.2f = faster growth
+    [Header("Growth Settings")] public float spawnInterval = 0.05f; // bigger number = slower
     
     int CountNeighbors(int x, int y)
     {
@@ -120,13 +122,15 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+        if (sceneName == "Phase1") currentPhase = 1;
+        else if (sceneName == "Phase2") currentPhase = 2;
+
         GenerateGrid();
         StartCoroutine(GrowthRoutine());
 
-        // Seed a starting tile in the center
-        int startX = width / 2;
-        int startY = height / 2;
-        grid[startX, startY].Fill(Color.white); // start with white
+        SeedCenter(); 
     }
 
     void GenerateGrid()
@@ -158,50 +162,6 @@ public class GridManager : MonoBehaviour
             TryGrowRandomTile();
         }
     }
-
-    // void TryGrowRandomTile()
-    // {
-    //     // Pick a random tile
-    //     int x = Random.Range(0, width);
-    //     int y = Random.Range(0, height);
-    //
-    //     Tile tile = grid[x, y];
-    //
-    //     // Skip if already filled
-    //     if (tile.isFilled) return;
-    //
-    //     List<Color> neighbors = tileColorNeighbors(x, y);
-    //
-    //     float growChance = neighbors.Count > 0 ? 0.9f : 0.05f; // faster + less random white spawning
-    //
-    //     if (Random.value < growChance)
-    //     {
-    //         Color newColor;
-    //
-    //         if (neighbors.Count == 0)
-    //         {
-    //             // VERY rare white spawn 
-    //             newColor = Color.white;
-    //         }
-    //         else
-    //         {
-    //             // Pick neighbor color
-    //             Color baseColor = neighbors[Random.Range(0, neighbors.Count)];
-    //
-    //             // Use mutation logic based on that color
-    //             tile.tileColor = baseColor;
-    //             newColor = tile.GetMutationColor();
-    //
-    //             // LIMIT to only white + primaries (Level 0 + 1) (for first level)
-    //             if (!(newColor == Color.white || newColor == Color.red || newColor == Color.blue || newColor == Color.yellow))
-    //             {
-    //                 newColor = baseColor;
-    //             }
-    //         }
-    //
-    //         tile.Fill(newColor);
-    //     }
-    // }
     
     // TryGrowRandomTile VERSION 1
     void TryGrowRandomTile()
@@ -225,7 +185,6 @@ public class GridManager : MonoBehaviour
             // Tiered mutation logic
             if (tileColorNeighbors(x, y).Count == 0)
             {
-                // No neighbors = only white
                 newColor = Color.white;
             }
             else
@@ -239,6 +198,15 @@ public class GridManager : MonoBehaviour
                 newColor = tile.GetMutationColor();
             }
     
+            // LIMIT COLORS IN PHASE 1
+            if (currentPhase == 1)
+            {
+                if (!(newColor == Color.white || newColor == Color.red || newColor == Color.blue || newColor == Color.yellow))
+                {
+                    newColor = Color.white;
+                }
+            }
+            
             tile.Fill(newColor);
         }
     }
