@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    [System.Serializable]
+    // PREVIOUS GOAL SETTING VERSION (in inspector)
+    /*[System.Serializable]
     public class ColorGoal
     {
         public Color color;
@@ -12,7 +13,7 @@ public class LevelManager : MonoBehaviour
     }
 
     [Header("Goal Settings")]
-    public ColorGoal[] goals;
+    public ColorGoal[] goals;*/
     
     //colours can be close enough and still work
     bool ColorsAreEqual(Color a, Color b)
@@ -34,26 +35,13 @@ public class LevelManager : MonoBehaviour
         CheckGoal();
     }
 
-    //previous checkgoal (before i started working on phase 2
-    /*void CheckGoal()
-    {
-        if (goalReached) return;
-
-        int currentCount = GridManager.Instance.CountTilesOfColor(goalColor);
-		bool isFull = GridManager.Instance.IsGridFull();
-
-        if (currentCount >= targetCount && isFull)
-        {
-            Debug.Log("Goal Reached!");
-            goalReached = true;
-        }
-    }*/
     
     void CheckGoal()
     {
         if (goalReached) return;
 
-        bool allGoalsMet = true;
+        // PREVIOUS GOAL SETTING VERSION (in inspector)
+        /*bool allGoalsMet = true;
 
         foreach (ColorGoal goal in goals)
         {
@@ -64,7 +52,7 @@ public class LevelManager : MonoBehaviour
                 allGoalsMet = false;
                 break;
             }
-        }
+        }*/
 
         bool isFull = GridManager.Instance.IsGridFull();
 
@@ -81,7 +69,7 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f); 
 
-        // ResetGrid(); // fordebugging  / testing before phase 2 was added 
+        // ResetGrid(); // for debugging 
 
 		SceneManager.LoadScene("Phase2");
     }
@@ -123,7 +111,8 @@ public class LevelManager : MonoBehaviour
 
         float yOffset = 10;
 
-        foreach (ColorGoal goal in goals)
+        // PREVIOUS GOAL SETTING VERSION (in inspector)
+        /*foreach (ColorGoal goal in goals)
         {
             int count = GridManager.Instance.CountTilesOfColor(goal.color);
 
@@ -131,7 +120,7 @@ public class LevelManager : MonoBehaviour
                 GetColorName(goal.color) +  count + " / " + goal.targetCount);
 
             yOffset += 30;
-        }
+        }*/
 
         yOffset += 40;
 
