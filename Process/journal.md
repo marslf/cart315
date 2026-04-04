@@ -813,3 +813,5 @@ Process:
 ## New controls
 
 ![new selection indicator testing](Media/w12/new-controls.gif)
+
+![new controls: effects testing](Media/w12/new-controls-effects.gif)

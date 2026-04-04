@@ -151,6 +151,7 @@ public class GridManager : MonoBehaviour
     void Update()
     {
         HandleSelectionInput();
+        HandleActionInput(); 
     }
 
     void GenerateGrid()
@@ -219,6 +220,34 @@ public class GridManager : MonoBehaviour
             selectedY = newY;
 
             UpdateSelectionVisual();
+        }
+    }
+    
+    void HandleActionInput()
+    {
+        Tile selectedTile = GetTileAt(selectedX, selectedY);
+
+        if (selectedTile == null || !selectedTile.isFilled) return;
+
+        // DELETE / PRUNE (SPACE)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("PRUNE at " + selectedX + ", " + selectedY);
+            selectedTile.Clear();
+        }
+
+        // WATER (A)
+        if (Input.GetKeyDown(KeyCode.A) && currentPhase = 3)
+        {
+            Debug.Log("WATER at " + selectedX + ", " + selectedY);
+            selectedTile.Water();
+        }
+
+        // FERTILIZE (D)
+        if (Input.GetKeyDown(KeyCode.D) && currentPhase = 4)
+        {
+            Debug.Log("FERTILIZE at " + selectedX + ", " + selectedY);
+            selectedTile.Fertilize();
         }
     }
     

@@ -67,7 +67,8 @@ using UnityEngine;
             isFertilized = false;
         }
         
-        void OnMouseOver()
+        // OLD CONTROLS
+        /*void OnMouseOver()
         {
             if (Input.GetMouseButtonDown(0) && isFilled)
             {
@@ -85,7 +86,7 @@ using UnityEngine;
                     Fertilize();
                 }
             }
-        }
+        }*/
 
         // tiered mutation logic
         public Color GetMutationColor()
