@@ -802,3 +802,14 @@ I have a few big goals but with everything I've done this semester this final pu
 Overall, this week was a big step toward making the game feel more like a complete experience.
 The core mechanics are in place, the visuals are starting to feel cohesive, 
 and the next week is all about polishing, expanding, and adding finishing touches.
+
+# Week 10 - Iterative Prototype 6
+
+Process:
+
+- Create selection indicator (piskel)
+- create new selection system (arrows with selection indicator)
+
+## New controls
+
+![new selection indicator testing](Media/w12/new-controls.gif)

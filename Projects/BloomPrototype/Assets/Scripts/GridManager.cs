@@ -6,6 +6,12 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance;
 
+    [Header("Selection")] //NEW SELECTION MODE / CONTROLS 
+    public GameObject selectionIndicatorPrefab;
+    private GameObject selectionIndicatorInstance;
+    private int selectedX = 0;
+    private int selectedY = 0;
+    
     [Header("Grid Settings")] public GameObject tilePrefab;
     public int width = 8;
     public int height = 8;
@@ -133,6 +139,18 @@ public class GridManager : MonoBehaviour
         StartCoroutine(GrowthRoutine());
 
         SeedCenter();
+        
+        //NEW SELECTION MODE / CONTROLS 
+        selectedX = width / 2;
+        selectedY = height / 2;
+
+        CreateSelectionIndicator();
+        UpdateSelectionVisual();
+    }
+    
+    void Update()
+    {
+        HandleSelectionInput();
     }
 
     void GenerateGrid()
@@ -155,7 +173,57 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+    
+    
+    // ---- NEW SELECTION MODE / CONTROLS ----
+    void CreateSelectionIndicator() 
+    {
+        if (selectionIndicatorPrefab != null)
+        {
+            selectionIndicatorInstance = Instantiate(
+                selectionIndicatorPrefab,
+                Vector3.zero,
+                Quaternion.identity
+            );
+        }
+    }
+    
+    void UpdateSelectionVisual()
+    {
+        Tile selectedTile = GetTileAt(selectedX, selectedY);
 
+        if (selectedTile != null && selectionIndicatorInstance != null)
+        {
+            selectionIndicatorInstance.transform.position = selectedTile.transform.position;
+
+            Debug.Log("Selected tile: " + selectedX + ", " + selectedY);
+        }
+    }
+    
+    void HandleSelectionInput()
+    {
+        int newX = selectedX;
+        int newY = selectedY;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow)) newX++;
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) newX--;
+        if (Input.GetKeyDown(KeyCode.UpArrow)) newY++;
+        if (Input.GetKeyDown(KeyCode.DownArrow)) newY--;
+        
+        newX = Mathf.Clamp(newX, 0, width - 1);
+        newY = Mathf.Clamp(newY, 0, height - 1);
+        
+        if (newX != selectedX || newY != selectedY)
+        {
+            selectedX = newX;
+            selectedY = newY;
+
+            UpdateSelectionVisual();
+        }
+    }
+    
+    //  -----------------------
+    
     IEnumerator GrowthRoutine()
     {
         while (true)

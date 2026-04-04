@@ -183,7 +183,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7657689184670643054, guid: 261b65ea860fe7c4ebab2e7c8d0e18ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61168576b8cf84489513361cb7f6d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  selectionIndicatorPrefab: {fileID: 8005001789409986106, guid: dce2a947f44cd6e43afbbbe350248592, type: 3}
   tilePrefab: {fileID: 977154549939129187, guid: f35495cbd34a9ec449963a4487573e3f, type: 3}
   width: 8
   height: 8
