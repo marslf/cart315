@@ -237,14 +237,14 @@ public class GridManager : MonoBehaviour
         }
 
         // WATER (A)
-        if (Input.GetKeyDown(KeyCode.A) && currentPhase = 3)
+        if (Input.GetKeyDown(KeyCode.A) && currentPhase == 3)
         {
             Debug.Log("WATER at " + selectedX + ", " + selectedY);
             selectedTile.Water();
         }
 
         // FERTILIZE (D)
-        if (Input.GetKeyDown(KeyCode.D) && currentPhase = 4)
+        if (Input.GetKeyDown(KeyCode.D) && currentPhase == 4)
         {
             Debug.Log("FERTILIZE at " + selectedX + ", " + selectedY);
             selectedTile.Fertilize();
