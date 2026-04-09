@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     void CheckGoal()
     {
         if (goalReached) return;
+        if (GridManager.Instance == null) return;
 
         bool isFull = GridManager.Instance.IsGridFull();
 

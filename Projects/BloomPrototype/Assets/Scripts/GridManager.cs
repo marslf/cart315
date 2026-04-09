@@ -5,19 +5,37 @@ using System.Collections.Generic;
 public class GridManager : MonoBehaviour
 {
     public static GridManager Instance;
-
-    [Header("Selection")] //NEW SELECTION MODE / CONTROLS 
+    public PhasePopup phasePopup;
+    
+    // -----------
+    
+    [Header("Selection")] 
     public GameObject selectionIndicatorPrefab;
     private GameObject selectionIndicatorInstance;
     private int selectedX = 0;
     private int selectedY = 0;
     
+    // -----------
+    
     [Header("Grid Settings")] public GameObject tilePrefab;
     public int width = 8;
     public int height = 8;
+    
+    // -----------
+    
+    [Header("Cooldowns")]
+    public float waterCooldown = 1f;
+    public float fertilizerCooldown = 1.5f;
 
+    private float lastWaterTime = -999f;
+    private float lastFertilizerTime = -999f;
+
+    // -----------
+    
     public int CountTilesOfColor(Color targetColor)
     {
+        if (grid == null) return 0;
+        
         int count = 0;
 
         for (int x = 0; x < width; x++)
@@ -47,6 +65,8 @@ public class GridManager : MonoBehaviour
 
     public bool IsGridFull()
     {
+        if (grid == null) return false;
+        
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -134,11 +154,17 @@ public class GridManager : MonoBehaviour
         else if (sceneName == "Phase2") currentPhase = 2;
         else if (sceneName == "Phase3") currentPhase = 3;
         else if (sceneName == "Phase4") currentPhase = 4;
-
+        
         GenerateGrid();
-        StartCoroutine(GrowthRoutine());
-
         SeedCenter();
+        
+        //POPUP WINDOWS
+        if (currentPhase == 3 || currentPhase == 4)
+        {
+            phasePopup.ShowPopup();
+        }
+        
+        StartCoroutine(GrowthRoutine());
         
         //NEW SELECTION MODE / CONTROLS 
         selectedX = width / 2;
@@ -150,6 +176,8 @@ public class GridManager : MonoBehaviour
     
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+        
         HandleSelectionInput();
         HandleActionInput(); 
     }
@@ -239,16 +267,43 @@ public class GridManager : MonoBehaviour
         // WATER (A)
         if (Input.GetKeyDown(KeyCode.A) && currentPhase == 3)
         {
-            Debug.Log("WATER at " + selectedX + ", " + selectedY);
-            selectedTile.Water();
+            if (Time.time >= lastWaterTime + waterCooldown)
+            {
+                Debug.Log("WATER at " + selectedX + ", " + selectedY);
+                selectedTile.Water();
+
+                lastWaterTime = Time.time;
+            }
+            else
+            {
+                Debug.Log("Water on cooldown");
+            }
         }
 
         // FERTILIZE (D)
         if (Input.GetKeyDown(KeyCode.D) && currentPhase == 4)
         {
-            Debug.Log("FERTILIZE at " + selectedX + ", " + selectedY);
-            selectedTile.Fertilize();
+            if (Time.time >= lastFertilizerTime + fertilizerCooldown)
+            {
+                Debug.Log("FERTILIZE at " + selectedX + ", " + selectedY);
+                selectedTile.Fertilize();
+
+                lastFertilizerTime = Time.time;
+            }
+            else
+            {
+                Debug.Log("Fertilizer on cooldown");
+            }
         }
+        
+        // RESTART (R)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("RESET GRID");
+
+            ResetGarden();
+        }
+        
     }
     
     //  -----------------------
@@ -403,5 +458,15 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+    
+    void ResetGarden()
+    {
+        ClearGrid();
+        SeedCenter();
+        
+        lastWaterTime = -999f;
+        lastFertilizerTime = -999f;
+    }
+    
     
 }
