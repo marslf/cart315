@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
-    int currentPhase = 1; // define phase (goal setting)
+    public TextMeshProUGUI goalText;
+    
+    int currentPhase = 1; 
 
     bool ColorsAreEqual(Color a, Color b)
     {
@@ -28,60 +31,78 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         CheckGoal();
+        UpdateGoalUI();
     }
 
+// PHASE OBJECTIVES!!
+void CheckGoal()
+{
+    if (goalReached) return;
+    if (GridManager.Instance == null) return;
 
-    void CheckGoal()
+    bool isFull = GridManager.Instance.IsGridFull();
+
+    if (currentPhase == 1) // PHASE 1: 8 yellow
     {
-        if (goalReached) return;
-        if (GridManager.Instance == null) return;
+        int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
 
-        bool isFull = GridManager.Instance.IsGridFull();
-
-        if (currentPhase == 1) //PHASE 1 OBJECTIVES
+        if (yellow >= 8 && isFull)
         {
-            int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
-
-            if (yellow >= 10 && isFull)
-            {
-                Debug.Log("Phase 1 Complete!");
-                goalReached = true;
-            }
-        }
-        else if (currentPhase == 2) //PHASE 2 OBJECTIVES
-        {
-            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
-            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
-
-            if (blue >= 10 && purple >= 5 && isFull)
-            {
-                Debug.Log("Phase 2 Complete!");
-                goalReached = true;
-            }
-        }
-        else if (currentPhase == 3) //PHASE 3 OBJECTIVES //TEMPORARY = CHANGE LATER + DONT FORGET TO UPDATE GUI
-        {
-            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
-            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
-
-            if (blue >= 5 && purple >= 5 && isFull)
-            {
-                Debug.Log("Phase 3 Complete!");
-                goalReached = true;
-            }
-        }
-        else if (currentPhase == 4) //PHASE 4 OBJECTIVES //TEMPORARY = CHANGE LATER + DONT FORGET TO UPDATE GUI
-        {
-            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
-            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
-
-            if (blue >= 5 && purple >= 5 && isFull)
-            {
-                Debug.Log("Phase 4 Complete!");
-                goalReached = true;
-            }
+            Debug.Log("Phase 1 Complete!");
+            goalReached = true;
         }
     }
+    else if (currentPhase == 2) // PHASE 2: 6 orange
+    {
+        int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
+
+        if (orange >= 6 && isFull)
+        {
+            Debug.Log("Phase 2 Complete!");
+            goalReached = true;
+        }
+    }
+    else if (currentPhase == 3) // PHASE 3: 12 red + 5 purple
+    {
+        int red = GridManager.Instance.CountTilesOfColor(Color.red);
+        int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
+
+        if (red >= 12 && purple >= 5 && isFull)
+        {
+            Debug.Log("Phase 3 Complete!");
+            goalReached = true;
+        }
+    }
+    else if (currentPhase == 4) // PHASE 4: 10 blue + 10 yellow + 5 green
+    {
+        int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+        int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+        int green = GridManager.Instance.CountTilesOfColor(new Color(0f, 1f, 0f));
+
+        if (blue >= 10 && yellow >= 10 && green >= 5 && isFull)
+        {
+            Debug.Log("Phase 4 Complete!");
+            goalReached = true;
+        }
+    }
+    else if (currentPhase == 5) // PHASE 5: 9 of EVERY color (except white)
+    {
+        int red = GridManager.Instance.CountTilesOfColor(Color.red);
+        int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+        int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+        int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
+        int green = GridManager.Instance.CountTilesOfColor(new Color(0f, 1f, 0f));
+        int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
+
+        if (red >= 9 && blue >= 9 && yellow >= 9 &&
+            orange >= 9 && green >= 9 && purple >= 9 &&
+            isFull)
+        {
+            Debug.Log("Phase 5 Complete!");
+            goalReached = true;
+        }
+    }
+}
 
     IEnumerator HandlePhaseComplete()
     {
@@ -110,53 +131,53 @@ public class LevelManager : MonoBehaviour
         return "Unknown";
     }
 
-    void OnGUI()
+    void UpdateGoalUI()
     {
-        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 2f);
-
-        float yOffset = 10;
+        if (GridManager.Instance == null) return;
 
         if (currentPhase == 1)
         {
             int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Yellow " + yellow + " / 10");
+            goalText.text = "Yellow " + yellow + " / 8";
         }
         else if (currentPhase == 2)
         {
-            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
-            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
-
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Blue " + blue + " / 10");
-            yOffset += 30;
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Purple " + purple + " / 5");
+            int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
+            goalText.text = "Orange " + orange + " / 6";
         }
         else if (currentPhase == 3)
         {
-            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+            int red = GridManager.Instance.CountTilesOfColor(Color.red);
             int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
 
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Blue " + blue + " / 5"); //CHANGE LATER
-            yOffset += 30;
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Purple " + purple + " / 5"); //CHANGE LATER
+            goalText.text = "Red " + red + " / 12\n" +
+                            "Purple " + purple + " / 5";
         }
         else if (currentPhase == 4)
         {
             int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+            int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+            int green = GridManager.Instance.CountTilesOfColor(new Color(0f, 1f, 0f));
+
+            goalText.text = "Blue " + blue + " / 10\n" +
+                            "Yellow " + yellow + " / 10\n" +
+                            "Green " + green + " / 5";
+        }
+        else if (currentPhase == 5)
+        {
+            int red = GridManager.Instance.CountTilesOfColor(Color.red);
+            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+            int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+            int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
+            int green = GridManager.Instance.CountTilesOfColor(new Color(0f, 1f, 0f));
             int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
 
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Blue " + blue + " / 5"); //CHANGE LATER
-            yOffset += 30;
-            GUI.Label(new Rect(10, yOffset, 300, 30), "Purple " + purple + " / 5"); //CHANGE LATER
-        }
-
-        yOffset += 50;
-
-        if (goalReached)
-        {
-            if (GUI.Button(new Rect(10, yOffset, 150, 50), "Next Phase"))
-            {
-                StartCoroutine(HandlePhaseComplete());
-            }
+            goalText.text = "Red " + red + " / 9\n" +
+                            "Blue " + blue + " / 9\n" +
+                            "Yellow " + yellow + " / 9\n" +
+                            "Orange " + orange + " / 9\n" +
+                            "Green " + green + " / 9\n" +
+                            "Purple " + purple + " / 9";
         }
     }
 

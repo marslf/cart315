@@ -154,6 +154,7 @@ public class GridManager : MonoBehaviour
         else if (sceneName == "Phase2") currentPhase = 2;
         else if (sceneName == "Phase3") currentPhase = 3;
         else if (sceneName == "Phase4") currentPhase = 4;
+        else if (sceneName == "Phase5") currentPhase = 5;
         
         GenerateGrid();
         SeedCenter();
@@ -265,7 +266,7 @@ public class GridManager : MonoBehaviour
         }
 
         // WATER (A)
-        if (Input.GetKeyDown(KeyCode.A) && currentPhase == 3)
+        if (Input.GetKeyDown(KeyCode.A) && currentPhase == 3 || currentPhase == 5)
         {
             if (Time.time >= lastWaterTime + waterCooldown)
             {
@@ -281,7 +282,7 @@ public class GridManager : MonoBehaviour
         }
 
         // FERTILIZE (D)
-        if (Input.GetKeyDown(KeyCode.D) && currentPhase == 4)
+        if (Input.GetKeyDown(KeyCode.D) && currentPhase >= 4 )
         {
             if (Time.time >= lastFertilizerTime + fertilizerCooldown)
             {
