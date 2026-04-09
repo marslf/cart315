@@ -803,7 +803,7 @@ Overall, this week was a big step toward making the game feel more like a comple
 The core mechanics are in place, the visuals are starting to feel cohesive, 
 and the next week is all about polishing, expanding, and adding finishing touches.
 
-# Week 10 - Iterative Prototype 6
+# Week 11 - Iterative Prototype 6
 
 ## New controls + selection system 
 
