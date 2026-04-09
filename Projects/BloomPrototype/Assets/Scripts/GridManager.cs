@@ -24,8 +24,8 @@ public class GridManager : MonoBehaviour
     // -----------
     
     [Header("Cooldowns")]
-    public float waterCooldown = 1f;
-    public float fertilizerCooldown = 1.5f;
+    public float waterCooldown = 5f;
+    public float fertilizerCooldown = 5f;
 
     private float lastWaterTime = -999f;
     private float lastFertilizerTime = -999f;
@@ -54,7 +54,7 @@ public class GridManager : MonoBehaviour
         return count;
     }
 
-    public int currentPhase = 1; // define phase
+    public int currentPhase = 1; 
 
     bool ColorsAreEqual(Color a, Color b)
     {
@@ -98,7 +98,7 @@ public class GridManager : MonoBehaviour
 
     private Tile[,] grid;
 
-    [Header("Growth Settings")] public float spawnInterval = 0.05f; // bigger number = slower
+    [Header("Growth Settings")] public float spawnInterval = 0.02f; // bigger number = slower
 
     int CountNeighbors(int x, int y)
     {
@@ -160,7 +160,7 @@ public class GridManager : MonoBehaviour
         SeedCenter();
         
         //POPUP WINDOWS
-        if (currentPhase == 3 || currentPhase == 4)
+        if (currentPhase == 2 || currentPhase == 4)
         {
             phasePopup.ShowPopup();
         }
@@ -266,7 +266,7 @@ public class GridManager : MonoBehaviour
         }
 
         // WATER (A)
-        if (Input.GetKeyDown(KeyCode.A) && currentPhase == 3 || currentPhase == 5)
+        if (Input.GetKeyDown(KeyCode.A) && (currentPhase == 2 || currentPhase == 3 || currentPhase == 5))
         {
             if (Time.time >= lastWaterTime + waterCooldown)
             {
@@ -282,7 +282,7 @@ public class GridManager : MonoBehaviour
         }
 
         // FERTILIZE (D)
-        if (Input.GetKeyDown(KeyCode.D) && currentPhase >= 4 )
+        if (Input.GetKeyDown(KeyCode.D) && (currentPhase == 4 || currentPhase == 5))
         {
             if (Time.time >= lastFertilizerTime + fertilizerCooldown)
             {
@@ -333,7 +333,24 @@ public class GridManager : MonoBehaviour
         if (tile.isFilled) return;
 
         int neighbors = CountNeighbors(x, y);
-        float growChance = neighbors > 0 ? 0.8f : 0.3f;
+        int emptyTiles = 0;
+
+        for (int ix = 0; ix < width; ix++)
+        {
+            for (int iy = 0; iy < height; iy++)
+            {
+                if (!grid[ix, iy].isFilled)
+                    emptyTiles++;
+            }
+        }
+
+        float growChance = neighbors > 0 ? 0.8f : 0.3f; 
+        
+        // Boost growth when grid almost full
+        if (emptyTiles < 10)
+        {
+            growChance = 1f;
+        }
 
         if (Random.value < growChance)
         {

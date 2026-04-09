@@ -805,13 +805,94 @@ and the next week is all about polishing, expanding, and adding finishing touche
 
 # Week 10 - Iterative Prototype 6
 
-Process:
+## New controls + selection system 
 
-- Create selection indicator (piskel)
-- create new selection system (arrows with selection indicator)
+This week I reworked the core interaction system pretty heavily. Before, everything was mouse-based, which worked but didn’t feel very intentional or “game-like.” 
+I switched to a keyboard system using arrow keys for movement and specific keys for actions. 
+To make that work, I had to create a selection indicator prefab that moves across the grid and always snaps to the currently selected tile. 
+Most of the process here was about tracking the selected X/Y positions, clamping them within the grid, and updating the visual position every time the player presses an arrow key.
 
-## New controls
+Once that was working, I connected actions (prune, water, fertilize) to the selected tile instead of mouse clicks. 
+This made the whole interaction system feel way more controlled and deliberate. 
+It also meant I had to rethink how feedback works, since the player is no longer pointing directly at things with a cursor. 
+Overall this change makes the game feel more like something you play rather than something you click through.
 
 ![new selection indicator testing](Media/w12/new-controls.gif)
 
 ![new controls: effects testing](Media/w12/new-controls-effects.gif)
+
+## Teaching the Player (Popups + Flow)
+
+Since the controls changed, I needed a way to explain them clearly. 
+I implemented popup windows that appear at the start of certain phases to introduce mechanics (like water and fertilizer). 
+Setting this up involved creating UI elements inside a canvas, then controlling them through a script that pauses the game using Time.timeScale = 0 
+until the player presses a button or hits enter.
+
+![phase 4 popup window](Media/w12/popup.png)
+
+This part took a bit of debugging because even when the logic worked, the popup wasn’t showing visually at first. 
+I had to fix references between the popup script and the UI object, and make sure everything was properly assigned in the Inspector. 
+Now that it works, it really helps guide the player without needing a lot of text, which fits the vibe better.
+
+## Cooldowns + Game Balance
+
+I added cooldowns for water and fertilizer because before you could just spam them, which made the mechanics feel kind of meaningless. 
+I implemented this by tracking the last time each action was used and comparing it to Time.time before allowing the action again.
+
+This was a simple change code-wise, but it made a big difference in how the game feels. 
+It slows things down just enough to make decisions matter, while still keeping the overall experience calm and not stressful. 
+I also made sure these values are adjustable in the Inspector so I can tweak them easily during playtesting.
+
+## Restart + general Usability
+
+I added a restart function mapped to the R key that clears the grid and reseeds the center tile. 
+This uses the existing ClearGrid() and SeedCenter() functions, so it was more about connecting things cleanly than building something new.
+
+This is mostly for usability—it makes testing way faster and also gives players a way to reset if things get messy. 
+It’s a small feature but really important for overall experience.
+
+## Audio + Atmosphere
+
+I implemented background music for both the menu and gameplay. 
+I set it up so tracks loop properly, and in some cases randomly cycle through different clips. 
+This adds a lot to the atmosphere. Before, the game felt kind of empty, and now it feels more calming and complete.
+
+This is one of those changes that doesn’t affect mechanics directly but really improves how the game is perceived. 
+If I have the time I will create my own music but it truly is not one of my priorities. I sourced the music from FreeSound and will credit the creators properly.
+
+## Phase 5 + Progression Changes 
+
+I created a new Phase 5 scene, which acts as a kind of “final” level where both water and fertilizer are available. 
+I duplicated an existing scene and modified it instead of starting from scratch, which made the process faster and more manageable. 
+I also adjusted the grid size for this phase (and others) to better match difficulty and pacing.
+
+I also changed the goals for each phase so they scale more logically. 
+Before they were more like placeholders, but now they better reflect the mechanics introduced in each phase. 
+I also moved the introduction of the water mechanic earlier (to Phase 2), which makes the progression feel smoother and less abrupt.
+
+## UI updates (text and goals)
+
+I replaced the old GUI-based goal display with TextMesh so it matches the visual style of the game. 
+This required rewriting how the goals are updated and displayed, since I’m no longer using OnGUI().
+
+This change makes everything feel way more cohesive visually. 
+It also pushed me to organize the goal logic a bit better, since I needed cleaner connections between the data and the UI.
+
+## Growth System Adjustments 
+
+I tweaked the growth logic to improve pacing. 
+I slightly increased growth speed and mutation chances so things feel more dynamic. 
+More importantly, I added a system that boosts growth when only a few tiles are left empty.
+
+Before this, the game would slow down a lot near the end, which felt frustrating. 
+Now it speeds up slightly and finishes more smoothly, which makes the overall loop feel more satisfying.
+
+## Reflection
+
+This week ended up being pretty packed, especially since it’s also the week of in-class playtesting, which is honestly a bit stressful. 
+A lot of these changes were focused on making the game understandable and smooth to play, so I’m hoping that comes through when people try it.
+
+There’s still a week before the final submission, so next I want to focus on smaller polish details 
+like subtle animations, sound effects, and maybe a visual indicator for the water and fertilizer cooldowns.
+I will also make changes to variables like growth speed or cooldown time based on what people in class suggest. 
+I want the game to really fit the relaxing calming vibe and if the timing / feel isn't right, fixing that is a priority.

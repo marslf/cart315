@@ -6,6 +6,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public TextMeshProUGUI goalText;
+    public GameObject nextPhaseButton;
     
     int currentPhase = 1; 
 
@@ -21,11 +22,13 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         string sceneName = SceneManager.GetActiveScene().name;
+        nextPhaseButton.SetActive(false);
 
         if (sceneName == "Phase1") currentPhase = 1;
         else if (sceneName == "Phase2") currentPhase = 2;
         else if (sceneName == "Phase3") currentPhase = 3;
         else if (sceneName == "Phase4") currentPhase = 4;
+        else if (sceneName == "Phase5") currentPhase = 5;
     }
 
     void Update()
@@ -50,16 +53,18 @@ void CheckGoal()
         {
             Debug.Log("Phase 1 Complete!");
             goalReached = true;
+            nextPhaseButton.SetActive(true);
         }
     }
-    else if (currentPhase == 2) // PHASE 2: 6 orange
+    else if (currentPhase == 2) // PHASE 2: 15 blue
     {
-        int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
+        int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
 
-        if (orange >= 6 && isFull)
+        if (blue >= 15 && isFull)
         {
             Debug.Log("Phase 2 Complete!");
             goalReached = true;
+            nextPhaseButton.SetActive(true);
         }
     }
     else if (currentPhase == 3) // PHASE 3: 12 red + 5 purple
@@ -71,6 +76,7 @@ void CheckGoal()
         {
             Debug.Log("Phase 3 Complete!");
             goalReached = true;
+            nextPhaseButton.SetActive(true);
         }
     }
     else if (currentPhase == 4) // PHASE 4: 10 blue + 10 yellow + 5 green
@@ -83,6 +89,7 @@ void CheckGoal()
         {
             Debug.Log("Phase 4 Complete!");
             goalReached = true;
+            nextPhaseButton.SetActive(true);
         }
     }
     else if (currentPhase == 5) // PHASE 5: 9 of EVERY color (except white)
@@ -100,8 +107,14 @@ void CheckGoal()
         {
             Debug.Log("Phase 5 Complete!");
             goalReached = true;
+            nextPhaseButton.SetActive(true);
         }
     }
+}
+
+public void OnNextPhasePressed()
+{
+    StartCoroutine(HandlePhaseComplete());
 }
 
     IEnumerator HandlePhaseComplete()
@@ -110,7 +123,7 @@ void CheckGoal()
 
         yield return new WaitForSeconds(0.5f);
 
-        // ResetGrid(); // for debugging 
+        // ResetGrid(); 
 
         SceneManager.LoadScene("Phase2");
     }
@@ -133,6 +146,8 @@ void CheckGoal()
 
     void UpdateGoalUI()
     {
+        // Debug.Log("Current Phase: " + currentPhase);
+        
         if (GridManager.Instance == null) return;
 
         if (currentPhase == 1)

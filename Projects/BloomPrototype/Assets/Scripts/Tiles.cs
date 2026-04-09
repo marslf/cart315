@@ -3,7 +3,7 @@ using UnityEngine;
  public class Tile : MonoBehaviour
  {
      public bool isFilled = false;
-     public Color tileColor; //color tiles
+     public Color tileColor; 
  
      private SpriteRenderer sr;
      
@@ -31,7 +31,7 @@ using UnityEngine;
         void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
-            sr.color = Color.black; // empty at start
+            sr.color = Color.black;
         }
         
         public void SetCoordinates(int x, int y)
@@ -52,7 +52,7 @@ using UnityEngine;
             isFilled = false;
             sr.color = Color.black;
             
-            if (waterVisualInstance != null) // watering mechanic
+            if (waterVisualInstance != null)
             {
                 Destroy(waterVisualInstance);
             }
@@ -67,26 +67,7 @@ using UnityEngine;
             isFertilized = false;
         }
         
-        // OLD CONTROLS
-        /*void OnMouseOver()
-        {
-            if (Input.GetMouseButtonDown(0) && isFilled)
-            {
-                Clear();
-            }
-
-            if (Input.GetMouseButtonDown(1) && isFilled)
-            {
-                if (GridManager.Instance.currentPhase == 3)
-                {
-                    Water();
-                }
-                else if (GridManager.Instance.currentPhase >= 4)
-                {
-                    Fertilize();
-                }
-            }
-        }*/
+        
 
         // tiered mutation logic
         public Color GetMutationColor()
@@ -117,9 +98,9 @@ using UnityEngine;
                 return Color.white;
             }
         }
-
-        // right click random fill
-        public Color GetRandomPaletteColor()
+        
+        // for debugging (click to plant)
+        /*public Color GetRandomPaletteColor()
         {
             Color[] palette = {
                 Color.white,
@@ -129,7 +110,7 @@ using UnityEngine;
                 new Color(0.5f, 0f, 0.5f)
             };
             return palette[Random.Range(0, palette.Length)];
-        }
+        }*/
         
         // WATERING
         public void Water()
