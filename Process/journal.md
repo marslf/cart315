@@ -860,6 +860,8 @@ This adds a lot to the atmosphere. Before, the game felt kind of empty, and now 
 This is one of those changes that doesn’t affect mechanics directly but really improves how the game is perceived. 
 If I have the time I will create my own music but it truly is not one of my priorities. I sourced the music from FreeSound and will credit the creators properly.
 
+![audio randomizer player](Media/w12/audio-player.png)
+
 ## Phase 5 + Progression Changes 
 
 I created a new Phase 5 scene, which acts as a kind of “final” level where both water and fertilizer are available. 
@@ -870,6 +872,8 @@ I also changed the goals for each phase so they scale more logically.
 Before they were more like placeholders, but now they better reflect the mechanics introduced in each phase. 
 I also moved the introduction of the water mechanic earlier (to Phase 2), which makes the progression feel smoother and less abrupt.
 
+![phase 5](Media/w12/phase5.png)
+
 ## UI updates (text and goals)
 
 I replaced the old GUI-based goal display with TextMesh so it matches the visual style of the game. 
@@ -877,6 +881,11 @@ This required rewriting how the goals are updated and displayed, since I’m no 
 
 This change makes everything feel way more cohesive visually. 
 It also pushed me to organize the goal logic a bit better, since I needed cleaner connections between the data and the UI.
+
+![phase 5 goals](Media/w12/goal-ui.png)
+
+I also realized last minute that I didn't have like an end scene for the playtest, so I quickly added one but I definitely will make a proper one / beautify this one since it was made last minute. 
+It is good enough for the playtest though.
 
 ## Growth System Adjustments 
 
