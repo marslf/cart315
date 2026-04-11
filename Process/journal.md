@@ -730,7 +730,7 @@ this complete and directionally clear.
 
 ---
 
-#  - Iterative Prototype 5
+# Week 10 - Iterative Prototype 5
 
 ## Level Manager Improvements
 
@@ -802,6 +802,8 @@ I have a few big goals but with everything I've done this semester this final pu
 Overall, this week was a big step toward making the game feel more like a complete experience.
 The core mechanics are in place, the visuals are starting to feel cohesive, 
 and the next week is all about polishing, expanding, and adding finishing touches.
+
+---
 
 # Week 11 - Iterative Prototype 6
 
@@ -905,3 +907,20 @@ There’s still a week before the final submission, so next I want to focus on s
 like subtle animations, sound effects, and maybe a visual indicator for the water and fertilizer cooldowns.
 I will also make changes to variables like growth speed or cooldown time based on what people in class suggest. 
 I want the game to really fit the relaxing calming vibe and if the timing / feel isn't right, fixing that is a priority.
+
+## In-class playtest session
+
+We had our class playtest session in class this week. This gave me good insight on what I want to do during the final week, before the final submission.
+
+- Make the first phases (introducing the different abilities/powers/tools) shorter, more "tutorial-ish"
+- Make more levels like phase 5
+- Animations
+- Tweak grow speed (?)
+- Maybe improve the main menu / starting screen + ending screen
+- Visual indicator for the water and fertilizer cooldowns
+
+--- 
+
+# Week 12 
+
+
