@@ -45,22 +45,26 @@ void CheckGoal()
 
     bool isFull = GridManager.Instance.IsGridFull();
 
-    if (currentPhase == 1) // PHASE 1: 8 yellow
+    if (currentPhase == 1) // PHASE 1: 1 of each level 1 flower
     {
         int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
+		int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+		int red = GridManager.Instance.CountTilesOfColor(Color.red);
 
-        if (yellow >= 8 && isFull)
+        if (yellow >= 1 && blue >= 1 && red >= 1)
         {
             Debug.Log("Phase 1 Complete!");
             goalReached = true;
             nextPhaseButton.SetActive(true);
         }
     }
-    else if (currentPhase == 2) // PHASE 2: 15 blue
+    else if (currentPhase == 2) // PHASE 2: 1 of each level 2 flower
     {
-        int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+		int green = GridManager.Instance.CountTilesOfColor(new Color(0f, 1f, 0f));
+		int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
+		int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
 
-        if (blue >= 15 && isFull)
+        if (purple >= 1 && green >= 1 && orange >= 1)
         {
             Debug.Log("Phase 2 Complete!");
             goalReached = true;
@@ -153,12 +157,24 @@ public void OnNextPhasePressed()
         if (currentPhase == 1)
         {
             int yellow = GridManager.Instance.CountTilesOfColor(Color.yellow);
-            goalText.text = "Yellow " + yellow + " / 8";
+            int blue = GridManager.Instance.CountTilesOfColor(Color.blue);
+            int red = GridManager.Instance.CountTilesOfColor(Color.red);
+
+            goalText.text = 
+                "Yellow " + yellow + " / 1\n" +
+                "Blue " + blue + " / 1\n" +
+                "Red " + red + " / 1";
         }
         else if (currentPhase == 2)
         {
+            int green = GridManager.Instance.CountTilesOfColor(new Color(0f, 1f, 0f));
+            int purple = GridManager.Instance.CountTilesOfColor(new Color(0.5f, 0f, 0.5f));
             int orange = GridManager.Instance.CountTilesOfColor(new Color(1f, 0.5f, 0f));
-            goalText.text = "Orange " + orange + " / 6";
+
+            goalText.text =
+                "Green " + green + " / 1\n" +
+                "Purple " + purple + " / 1\n" +
+                "Orange " + orange + " / 1";
         }
         else if (currentPhase == 3)
         {
