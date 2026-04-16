@@ -72,7 +72,7 @@ I started by brainstorming ideas that I might want to explore.
 I was feeling super sick all week so this is not my best, but I did try. At first, I wanted something simple enough to realistically complete, but still interesting from a design perspective. 
 Since we were given a Pong-style base game, I thought it made sense to build on that rather than starting something entirely new. I kept thinking about how I could slightly disrupt a very familiar game without making it overly complicated.
 
-I was drawn to the idea of unpredictability. Pong is normally very stable — the ball behaves exactly how you expect it to, 
+I was drawn to the idea of unpredictability. Pong is normally very stable, the ball behaves exactly how you expect it to, 
 and over time players can almost enter a rhythm. I became curious about what would happen if that stability slowly disappeared.
 
 This led me to my core question:
@@ -768,7 +768,7 @@ The biggest focus this week was definitely Phase 3 and Phase 4 and creating uniq
 ![effect prefabs](Media/w11/prefabs.png)
 
 For Phase 3, I implemented the watering mechanic, which took a lot of iteration to get right.
-At first, I just had it increase a tile’s “watered” state, but it didn’t feel meaningful—the effect was too subtle and players couldn’t really see the impact.
+At first, I just had it increase a tile’s “watered” state, but it didn’t feel meaningful, the effect was too subtle and players couldn’t really see the impact.
 I went through multiple rounds of tweaking: adjusting how much each water action spreads, how it interacts with neighboring tiles, and how it visually updates.
 I also added a visual indicator under the tile (a blue circle with a darker green base) so the player can clearly see which tiles have been watered.
 This feedback made it feel like the mechanic actually matters, instead of being just a button press. 
@@ -848,7 +848,7 @@ I also made sure these values are adjustable in the Inspector so I can tweak the
 I added a restart function mapped to the R key that clears the grid and reseeds the center tile. 
 This uses the existing ClearGrid() and SeedCenter() functions, so it was more about connecting things cleanly than building something new.
 
-This is mostly for usability—it makes testing way faster and also gives players a way to reset if things get messy. 
+This is mostly for usability, it makes testing way faster and also gives players a way to reset if things get messy. 
 It’s a small feature but really important for overall experience.
 
 ## Audio + Atmosphere
@@ -953,7 +953,7 @@ I also made sure these values are adjustable in the Inspector so I can tweak the
 I added a restart function mapped to the R key that clears the grid and reseeds the center tile.
 This uses the existing ClearGrid() and SeedCenter() functions, so it was more about connecting things cleanly than building something new.
 
-This is mostly for usability—it makes testing way faster and also gives players a way to reset if things get messy.
+This is mostly for usability, it makes testing way faster and also gives players a way to reset if things get messy.
 It’s a small feature but really important for overall experience.
 
 ## Audio + Atmosphere
@@ -1011,18 +1011,138 @@ like subtle animations, sound effects, and maybe a visual indicator for the wate
 I will also make changes to variables like growth speed or cooldown time based on what people in class suggest.
 I want the game to really fit the relaxing calming vibe and if the timing / feel isn't right, fixing that is a priority.
 
-## In-class playtest session
-
-We had our class playtest session in class this week. This gave me good insight on what I want to do during the final week, before the final submission.
-
-- Make the first phases (introducing the different abilities/powers/tools) shorter, more "tutorial-ish"
-- Make more levels like phase 5
-- Animations
-- Tweak grow speed (?)
-- Maybe improve the main menu / starting screen + ending screen
-- Visual indicator for the water and fertilizer cooldowns
-
 --- 
 
 # Week 12 
 
+![animated main page](Media/final/animated-main-menu.gif)
+
+## Project Overview / Final Direction 
+
+Going into this final stage, Bloom ended up feeling a lot more complete and cohesive than I initially expected, 
+especially considering how much the direction shifted over time. 
+Early on, I approached it as a puzzle game, then pivoted pretty strongly into the idea of an idle game, 
+and now it kind of sits somewhere in between, but closer to a small, active, level-based experience. 
+It’s not really a puzzle game in the traditional sense, but it’s also not idle anymore. 
+It became more of a calm, interactive system that the player actively shapes, in short and contained phases.
+
+I think what stayed consistent throughout all those shifts was the core system: the growth, mutation, and color interactions. 
+That part carried through every iteration and ended up being the foundation of the final prototype. 
+Everything else, phases, mechanics, controls, UI, kind of built around that and evolved as I figured out what actually felt good to play.
+
+## Integration of Previous Prototypes
+
+The final version of Bloom definitely integrates most of what I explored in earlier prototypes, but in a much more structured and intentional way. 
+The tile growth and mutation system, which started more as an experiment, is now the central mechanic that drives everything. 
+The later additions like watering and fertilizing build directly on that system rather than replacing it, which made the whole experience feel more cohesive.
+
+One of the biggest changes was how the game is structured. 
+The earlier idea of an idle system didn’t fully carry through, instead of letting the system run mostly on its own, 
+the player is now much more involved through direct interaction (selection, pruning, influencing growth). 
+The phase system also helped organize everything into smaller, more digestible segments, which works better for pacing and learning.
+
+![phase 1 completed](Media/final/phase1-complete.png)
+
+So even though the direction changed a few times, it doesn’t feel like I threw anything away. 
+It feels more like refining and re-contextualizing what I already had.
+
+## Focus: Implementation vs Look/Feel vs Role
+
+I think my focus ended up being a pretty balanced mix, but it definitely started more on the implementation side. 
+I really wanted to avoid falling into what I’ve done in past projects, where I focus too much on aesthetics 
+and the actual gameplay ends up feeling shallow.
+
+So at the beginning, I prioritized making sure the core systems actually worked and were interesting: 
+growth logic, mutation behavior, and how the player can influence that system. 
+Once that felt solid, I spent more time on visuals and overall feel, 
+making sure everything matched the calm and soft aesthetic I was going for.
+
+Toward the end, especially during playtesting, my focus shifted more toward the player experience, things like clarity, onboarding, and pacing. 
+Adding small instructions, adjusting early goals to feel more like tutorials, 
+and refining controls were all part of making the game more understandable without over-explaining it.
+
+## WWW: What's Working Well
+
+The part I’m happiest with is definitely the growth and mutation system. 
+It feels dynamic, a bit unpredictable, and interesting to watch and interact with. 
+It’s simple at a glance, but there’s enough variation that it doesn’t feel repetitive.
+
+I also think switching from mouse controls to keyboard controls with the selection indicator made a huge difference, even though it was a later change. 
+It made the interaction feel more intentional and game-like, and it fits the overall vibe much better than clicking did.
+
+The watering and fertilizing mechanics also worked out well. During the playtest, people found them fun and interesting, 
+and Phase 5, where both are available, was definitely the most enjoyable part for players. 
+That felt like a good confirmation that the progression and layering of mechanics is working.
+
+## Post-Playtest Tweaks
+
+After the in-class playtest, I made a series of smaller adjustments focused mostly on clarity, onboarding, and overall feel. 
+None of these changes were major system overhauls, but together they make the experience a lot smoother and more understandable.
+
+One of the main additions was subtle animation. 
+I added small animated flowers to both the main menu and the end screen, giving them a slight rotation and floating movement. 
+This doesn’t affect gameplay, but it helps reinforce the soft, calm aesthetic and makes those screens feel a bit more alive 
+and intentional instead of static.
+
+![animated flower code](Media/final/floating-flower-code.png)
+
+I also focused on making the early phases easier to understand without needing explanation. 
+I added simple on-screen tips in Phase 1 and Phase 3, for example, indicating how to move with arrow keys and how to prune using the keyboard. 
+In Phase 3, I also clarified that the player now needs to fully fill the garden patch to progress. 
+These are very minimal hints, but they help guide the player without overwhelming them with instructions.
+
+![phase 1 changed](Media/final/phase1.png)
+
+Along with that, I adjusted the goals for Phase 1 and Phase 2 to make them feel more like introductory/tutorial levels. 
+They are now simpler and don’t require filling the entire grid, which makes the progression into later phases feel more natural. 
+The requirement to fully fill the grid is only introduced starting in Phase 3, once the player is more comfortable with the mechanics.
+
+![phase 1 changed](Media/final/phase3.png)
+
+Finally, I added small key indicators next to the water and fertilizer icons. Even though there are popup instructions 
+when those mechanics are introduced, some players during the playtest mentioned forgetting which keys to press. 
+This small visual reminder helps reinforce the controls without interrupting the flow of the game.
+
+Overall, these changes are pretty minor individually, but they all aim to make the experience more intuitive and reduce confusion, 
+especially in the earlier stages.
+
+## What could be expanded
+
+Nothing feels fundamentally broken or off, but it does feel like a small slice of a bigger idea. 
+If I were to continue developing Bloom, I would definitely expand the number of phases and explore more mechanics or variations.
+
+I could also see adding more controlled or limited abilities, or systems that let 
+the player influence the growth in different ways beyond just watering and fertilizing.
+
+Right now it works well as a short, contained experience, but it has the potential to grow into something more complex.
+
+## Final Thoughts
+
+Overall, I’m pretty proud of how Bloom turned out.
+I think the biggest improvement for me personally was finding a better balance between mechanics and aesthetics.
+In past projects, I’ve definitely leaned too heavily into visuals, spending a lot of time making things look nice, 
+but then the actual gameplay would end up feeling a bit shallow or unfinished.
+
+With this project, I approached things more intentionally.
+I focused first on building a system that actually felt interesting to interact with, especially the growth and mutation logic, 
+and how the player can influence it through watering, fertilizing, and pruning.
+Once that foundation was working and felt solid, I spent more time developing the visual side, instead of the other way around.
+I think that shift really made a difference.
+Even though the game is still pretty simple overall, it feels more complete and cohesive because the mechanics are doing a lot of the work, 
+and the visuals are supporting that instead of carrying it.
+
+At the same time, I’m still really happy with how the game looks and feels.
+The softer colors, the flowers, the small animations, and the overall pacing 
+all come together in a way that matches the calm and slightly whimsical vibe I was aiming for.
+So it doesn’t feel like I sacrificed aesthetics, it just feels more balanced.
+
+Given the timeframe, I think this is a strong final prototype.
+It does feel more like a small, contained experience or a demo rather than a full game, but I don’t think that’s a bad thing.
+If anything, it shows that there’s room to expand.
+I could definitely see myself continuing this project by adding more phases, introducing new mechanics, 
+or even exploring different types of player interactions.
+There’s a lot of potential in the core system, and it feels flexible enough to grow into something bigger.
+
+More than anything, this project helped me understand my own tendencies a bit better as a game maker, 
+and how to approach building something in a more balanced and intentional way.
+So even beyond the final result itself, I feel like I learned a lot through the process, which makes this one feel especially valuable to me.
