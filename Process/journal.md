@@ -1013,7 +1013,7 @@ I want the game to really fit the relaxing calming vibe and if the timing / feel
 
 --- 
 
-# Week 12 
+# Week 12 - Final Reflection
 
 ![animated main page](Media/final/animated-main-menu.gif)
 
